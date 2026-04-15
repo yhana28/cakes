@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yhana's Cakes and Patries</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap"
@@ -81,10 +82,9 @@
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-            border-radius: 16px;
             background-color: white;
-            padding: 16px;
-            border-radius: 24px;
+            padding: 6px;
+            border-radius: 16px;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
             animation: lightbox-in 0.3s ease;
         }
@@ -385,10 +385,10 @@
             </div>
 
             <main
-                class="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-8 px-10 md:px-1 pt-10 pb-28 items-center min-h-[75vh]">
+                class="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-1 pt-10 pb-16 md:pb-28 items-center md:min-h-[75vh]">
 
                 <div class="pl-4">
-                    <h1 class="hero-title text-[5.5rem] leading-[1.1] text-[var(--text-dark)] mb-6">Yhana's Cakes and Patries</h1>
+                    <h1 class="hero-title text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.5rem] leading-[1.1] text-[var(--text-dark)] mb-6">Yhana's Cakes and Patries</h1>
                     <p class="hero-tagline font-bold text-[11px] tracking-[0.25em] mb-6">ANG CAKE NA HINDI NAKAKAUMAY</p>
                     <p class="hero-text text-[13px] leading-relaxed max-w-[380px] mb-8 font-medium opacity-80">
                         Craving for a taste of heaven? Look no further! Our luscious cakes are baked fresh daily with love and adorned with artistic designs that are sure to delight your taste buds and captivate your senses.
@@ -399,10 +399,10 @@
                     </a>
                 </div>
 
-                <div class="hero-image relative flex justify-end items-center pr-10">
+                <div class="hero-image relative hidden md:flex justify-center items-center">
                     <div
-                        class="w-[680px] h-[550px] bg-[var(--blob-brown)] cake-frame flex justify-center items-center shadow-md">
-                        <img src="images/cake.jpg"
+                        class="w-[85%] aspect-[5/4] bg-[var(--blob-brown)] cake-frame flex justify-center items-center shadow-md">
+                        <img src="images/v2/floral/cake.jpg"
                             alt="Chocolate Layer Cake" class="w-[93%] h-[93%] object-cover cake-frame">
                     </div>
                 </div>
@@ -514,6 +514,7 @@
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Mango Cake</h3>
                             <p class="text-[12px] opacity-50 mt-1 mb-2">Light chiffon layered with fresh mango cream</p>
+                            <span class="inline-block bg-[var(--blob-brown)] text-white text-[10px] font-semibold px-3 py-1 rounded-full mb-2">SEASONAL</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900 - &#8369;1,000</p>
                         </div>
                     </div>
@@ -524,6 +525,7 @@
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Vanilla Chiffon Cake</h3>
                             <p class="text-[12px] opacity-50 mt-1 mb-2">Classic soft vanilla chiffon with buttercream frosting</p>
+                            <span class="inline-block bg-[var(--blob-brown)] text-white text-[10px] font-semibold px-3 py-1 rounded-full mb-2">BESTSELLER</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;850</p>
                         </div>
                     </div>
@@ -534,6 +536,7 @@
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Choco Chiffon Cake</h3>
                             <p class="text-[12px] opacity-50 mt-1 mb-2">Rich chocolate chiffon with creamy choco frosting</p>
+                            <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">FAN FAVORITE</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900</p>
                         </div>
                     </div>
@@ -544,7 +547,8 @@
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Mocha Chiffon Cake</h3>
                             <p class="text-[12px] opacity-50 mt-1 mb-2">Coffee-infused chiffon with smooth mocha cream</p>
-                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;850</p>
+                            <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">FAN FAVORITE</span>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900</p>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
@@ -554,7 +558,8 @@
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Ube Chiffon Cake</h3>
                             <p class="text-[12px] opacity-50 mt-1 mb-2">Filipino favorite purple yam chiffon cake</p>
-                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;850</p>
+                            <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">PINOY CLASSIC</span>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900</p>
                         </div>
                     </div>
                 </div>
@@ -586,6 +591,7 @@
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Creamy Caramel Cake</h3>
                             <p class="text-[12px] opacity-50 mt-1 mb-2">Buttery caramel layers with silky caramel drip</p>
+                            <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">MUST TRY</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;1,000</p>
                         </div>
                     </div>
@@ -608,7 +614,7 @@
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Chocomoist Cupcakes</h3>
                             <p class="text-[12px] opacity-50 mt-1">Mini versions of our bestselling chocomoist cake</p>
                             <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mt-2 mb-2">12 PCS</span>
-                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;500</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;550</p>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
@@ -619,7 +625,7 @@
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Bento Cake with Cupcakes</h3>
                             <p class="text-[12px] opacity-50 mt-1">Perfect gift bundle with bento cake + 8 cupcakes</p>
                             <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mt-2 mb-2">8 PCS</span>
-                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;600</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;650</p>
                         </div>
                     </div>
                 </div>
@@ -694,15 +700,15 @@
                             <span class="inline-block bg-[var(--blob-beige)] text-[var(--blob-brown)] text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-full mb-4 w-fit">POPULAR</span>
                             <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-3" style="font-family: 'Playfair Display', serif;">Floral Cakes</h3>
                             <p class="text-[13px] leading-relaxed opacity-70 mb-5">Elegant cakes adorned with beautiful buttercream or fondant flowers. Perfect for birthdays, weddings, and anniversaries. Each floral design is handcrafted with love.</p>
-                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;1,500 &bull; Price varies by design</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;1,300 &bull; Price varies by design</p>
                         </div>
                         <div class="grid grid-cols-3 gap-2 p-3">
-                            <div class="rounded-xl overflow-hidden"><img src="images/floral/1.png" alt="Floral Cake 1" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/floral/2.png" alt="Floral Cake 2" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/floral/3.png" alt="Floral Cake 3" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/floral/4.png" alt="Floral Cake 4" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/floral/5.png" alt="Floral Cake 5" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/floral/6.png" alt="Floral Cake 6" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/floral/wedding.png" alt="Floral Cake 1" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/floral/hbd18.png" alt="Floral Cake 2" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/floral/1.png" alt="Floral Cake 3" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/floral/seventy.png" alt="Floral Cake 4" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/floral/cake.jpg" alt="Floral Cake 5" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/floral/6.png" alt="Floral Cake 6" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
                 </div>
@@ -711,18 +717,18 @@
                 <div class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="order-2 md:order-1 grid grid-cols-3 gap-2 p-3">
-                            <div class="rounded-xl overflow-hidden"><img src="images/themed/1.png" alt="Themed Cake 1" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/themed/2.png" alt="Themed Cake 2" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/themed/3.png" alt="Themed Cake 3" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/themed/4.png" alt="Themed Cake 4" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/themed/5.png" alt="Themed Cake 5" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/themed/6.png" alt="Themed Cake 6" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/themed/1.png" alt="Themed Cake 1" class="w-full h-full"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/themed/5.png" alt="Themed Cake 2" class="w-full h-full"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/themed/12.png" alt="Themed Cake 3" class="w-full h-full"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/themed/11.png" alt="Themed Cake 4" class="w-full h-full"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/themed/8.png" alt="Themed Cake 5" class="w-full h-full"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/themed/14.png" alt="Themed Cake 6" class="w-full h-full"></div>
                         </div>
                         <div class="order-1 md:order-2 p-8 md:p-10 flex flex-col justify-center">
                             <span class="inline-block bg-[var(--blob-beige)] text-[var(--blob-brown)] text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-full mb-4 w-fit">MOST REQUESTED</span>
                             <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-3" style="font-family: 'Playfair Display', serif;">Themed Cakes</h3>
                             <p class="text-[13px] leading-relaxed opacity-70 mb-5">From cartoon characters to your favorite movies and hobbies — we can create any theme you imagine! Great for kids' birthdays, debuts, and special occasions.</p>
-                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;1,500 &bull; Price varies by design</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;850 &bull; Price varies by design</p>
                         </div>
                     </div>
                 </div>
@@ -733,15 +739,15 @@
                         <div class="p-8 md:p-10 flex flex-col justify-center">
                             <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-3" style="font-family: 'Playfair Display', serif;">Number Cakes</h3>
                             <p class="text-[13px] leading-relaxed opacity-70 mb-5">Celebrate milestones with a cake shaped in your special number. Perfect for birthdays, anniversaries, and countdown celebrations. Available in any number combination.</p>
-                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;1,800 &bull; Price varies by design</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;900 &bull; Price varies by design</p>
                         </div>
                         <div class="grid grid-cols-3 gap-2 p-3">
-                            <div class="rounded-xl overflow-hidden"><img src="images/number/1.png" alt="Number Cake 1" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/number/2.png" alt="Number Cake 2" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/number/3.png" alt="Number Cake 3" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/number/4.png" alt="Number Cake 4" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/number/5.png" alt="Number Cake 5" class="w-full h-full object-cover"></div>
-                            <div class="rounded-xl overflow-hidden"><img src="images/number/6.png" alt="Number Cake 6" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/number/1.png" alt="Number Cake 1" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/number/2.png" alt="Number Cake 2" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/number/3.png" alt="Number Cake 3" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/number/8.png" alt="Number Cake 4" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/number/9.png" alt="Number Cake 5" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/v2/number/10.png" alt="Number Cake 6" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
                 </div>
@@ -749,9 +755,9 @@
                 <!-- Smaller Categories Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
                     <!-- Ball Cakes -->
-                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                    <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
                         <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
-                            <img src="images/ball/1.png" alt="Ball Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <img src="images/ball/4.png" alt="Ball Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Ball Cakes</h3>
@@ -760,9 +766,9 @@
                         </div>
                     </div>
                     <!-- Butterfly Cakes -->
-                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                    <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
                         <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
-                            <img src="images/butterfly/1.png" alt="Butterfly Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <img src="images/butterfly/1.png" alt="Butterfly Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Butterfly Cakes</h3>
@@ -771,9 +777,9 @@
                         </div>
                     </div>
                     <!-- Money Cakes -->
-                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                    <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
                         <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
-                            <img src="images/1653651644288.png" alt="Money Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <img src="images/1661677218192.png" alt="Money Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Money Cakes</h3>
@@ -782,9 +788,9 @@
                         </div>
                     </div>
                     <!-- Gender Reveal Cakes -->
-                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                    <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
                         <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
-                            <img src="images/1680933945130-copy.png" alt="Gender Reveal Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <img src="images/1680933945130-copy.png" alt="Gender Reveal Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Gender Reveal Cakes</h3>
@@ -1025,7 +1031,7 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
-        document.querySelectorAll('#menu img, #customized img').forEach(img => {
+        document.querySelectorAll('#menu img, #customized img, .hero-image img').forEach(img => {
             img.style.cursor = 'zoom-in';
             img.addEventListener('click', (e) => {
                 e.stopPropagation();
