@@ -1,639 +1,1051 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
     <meta charset="UTF-8">
-    <title>Yhana's</title>
-
-    <meta name="google-site-verification" content="VY67vJcl-ao2dXZE4LT5rT1qkPrLqt-x-CuR6-RRxqE" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Yhana's Cakes and Patries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #F8F3EE;
+            --text-dark: #462111;
+            --blob-brown: #B76027;
+            --blob-beige: #EDDACB;
+            --blob-purple: #E1D6E2;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Exact Organic Blob Shapes */
+        .cake-frame {
+            border-radius: 35% 65% 44% 56% / 46% 50% 50% 54%;
+            animation: morph-frame 48s ease-in-out infinite;
+        }
+
+        @keyframes morph-frame {
+            0% { border-radius: 35% 65% 44% 56% / 46% 50% 50% 54%; }
+            25% { border-radius: 45% 55% 60% 40% / 55% 40% 60% 45%; }
+            50% { border-radius: 55% 45% 35% 65% / 40% 60% 40% 60%; }
+            75% { border-radius: 40% 60% 50% 50% / 60% 45% 55% 40%; }
+            100% { border-radius: 35% 65% 44% 56% / 46% 50% 50% 54%; }
+        }
+
+        .blob-top-beige {
+            border-radius: 48% 52% 51% 49% / 54% 53% 47% 46%;
+        }
+
+        .blob-top-brown {
+            border-radius: 30% 70% 21% 79% / 30% 41% 59% 70%;
+        }
+
+        .blob-bottom-brown {
+            border-radius: 65% 35% 67% 33% / 54% 64% 36% 46%;
+        }
+
+        .blob-left-purple {
+            border-radius: 50% 50% 50% 50% / 60% 40% 60% 40%;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 16px;
+            background-color: white;
+            padding: 16px;
+            border-radius: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            animation: lightbox-in 0.3s ease;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: opacity 0.2s;
+        }
+        .lightbox-close:hover {
+            opacity: 0.7;
+        }
+        @keyframes lightbox-in {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Fixed Navbar */
+        .nav-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(248, 243, 238, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            z-index: 50;
+        }
+
+        /* SVG Line Art Styling */
+        svg.line-art {
+            stroke: var(--text-dark);
+            fill: none;
+            stroke-width: 0.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ===== ANIMATIONS ===== */
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .stagger-children.active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-children.active > *:nth-child(1) { transition-delay: 0.05s; }
+        .stagger-children.active > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger-children.active > *:nth-child(3) { transition-delay: 0.15s; }
+        .stagger-children.active > *:nth-child(4) { transition-delay: 0.2s; }
+        .stagger-children.active > *:nth-child(5) { transition-delay: 0.25s; }
+        .stagger-children.active > *:nth-child(6) { transition-delay: 0.3s; }
+        .stagger-children.active > *:nth-child(7) { transition-delay: 0.35s; }
+        .stagger-children.active > *:nth-child(8) { transition-delay: 0.4s; }
+        .stagger-children.active > *:nth-child(9) { transition-delay: 0.45s; }
+
+        /* Hero entrance */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .hero-title {
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .hero-tagline {
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+        .hero-text {
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+        .hero-btn {
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+        .hero-image {
+            animation: fadeInRight 1.2s ease 0.4s both;
+        }
+        .hero-nav {
+            animation: fadeInUp 0.8s ease 0s both;
+        }
+
+        /* Floating blobs */
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(10px, -15px) rotate(2deg); }
+            66% { transform: translate(-8px, 8px) rotate(-2deg); }
+        }
+        .blob-animate {
+            animation: floatBlob 8s ease-in-out infinite;
+        }
+        .blob-animate-slow {
+            animation: floatBlob 12s ease-in-out infinite reverse;
+        }
+
+        /* Floating line art */
+        @keyframes floatArt {
+            0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+            50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+        }
+        .float-art {
+            animation: floatArt 4s ease-in-out infinite;
+        }
+
+        /* Pulse on hover for cards */
+        .card-hover {
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(70, 33, 17, 0.12);
+        }
+
+        /* Image zoom on hover */
+        .img-zoom {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom:hover {
+            transform: scale(1.08);
+        }
+
+        /* Nav link underline animation */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blob-brown);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Section title decoration */
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+        .section-title-line {
+            display: block;
+            margin: 12px auto 0;
+            height: 3px;
+            width: 0;
+            background: var(--blob-brown);
+            border-radius: 2px;
+        }
+        .active .section-title-line {
+            animation: expandLine 0.8s ease 0.3s both;
+        }
+
+        /* Reminder icon bounce */
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .reminder-icon:hover {
+            animation: gentleBounce 0.6s ease;
+        }
+
+        /* Button shine effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.6s ease;
+        }
+        .btn-shine:hover::after {
+            left: 120%;
+        }
+    </style>
 </head>
 
-<body class="finisher-header">
-    <div>
-        <div class="section" id="home">
-            <header>
-                <a href="#" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="200">
-                    <img src="images/logo.png" class="logo">
-                    <h2>Yhana's Cake & Pastries</h2>
+<body class="antialiased min-h-screen">
+
+    <!-- Fixed navbar (hidden by default, shows after scrolling past home) -->
+    <nav id="navbar-fixed" class="nav-fixed flex justify-between items-center px-10 md:px-16 transition-all duration-300" style="display: none;">
+        <div class="flex items-center gap-3">
+            <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-12 w-12 object-contain">
+            <span class="font-bold tracking-widest text-sm leading-tight">Yhana's<br>Cakes and Patries</span>
+        </div>
+        <div class="hidden md:flex gap-16 text-[13px] font-medium tracking-wide">
+            <a href="#home" class="nav-link hover:opacity-70 transition-opacity">Home</a>
+            <a href="#menu" class="nav-link hover:opacity-70 transition-opacity">Menu</a>
+            <a href="#customized" class="nav-link hover:opacity-70 transition-opacity">Costumized</a>
+            <a href="#reminders" class="nav-link hover:opacity-70 transition-opacity">Reminders</a>
+            <a href="#about" class="nav-link hover:opacity-70 transition-opacity">About</a>
+        </div>
+        <a href="https://www.facebook.com/messages/t/YhanasCakesandPastries" target="_blank"
+            class="flex items-center gap-2 bg-gradient-to-r from-[var(--blob-brown)] to-[var(--text-dark)] text-white text-[11px] font-bold tracking-wider px-5 py-2.5 rounded-full shadow-md hover:scale-105 hover:shadow-[0_6px_20px_rgba(183,96,39,0.35)] transition-all duration-300 btn-shine relative">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.907 1.453 5.504 3.727 7.196V22l3.405-1.868c.91.252 1.871.387 2.868.387 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.07 12.457l-2.55-2.72-4.97 2.72 5.465-5.8 2.613 2.72 4.907-2.72-5.465 5.8z"/>
+            </svg>
+            ORDER NOW
+        </a>
+    </nav>
+
+    <div id="home" class="relative w-full min-h-screen overflow-hidden">
+
+        <div
+            class="absolute top-0 left-[25%] w-[350px] h-[180px] bg-[var(--blob-beige)] blob-top-beige blob-animate">
+        </div>
+        <div class="absolute top-0 right-0 w-[400px] h-[350px] bg-[var(--blob-brown)] blob-top-brown opacity-90 blob-animate-slow">
+        </div>
+        <div class="absolute top-[10%] right-[22%] w-[120px] h-[100px] bg-[var(--blob-purple)] rounded-full blob-animate"></div>
+        <div
+            class="absolute bottom-0 left-[20%] w-[450px] h-[250px] bg-[var(--blob-brown)] blob-bottom-brown opacity-90 blob-animate-slow">
+        </div>
+        <div class="absolute top-[40%] left-0 w-[150px] h-[200px] bg-[var(--blob-purple)] blob-left-purple blob-animate"></div>
+        <div class="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[var(--blob-beige)] rounded-full blob-animate-slow"></div>
+        <div
+            class="absolute bottom-[5%] right-[35%] w-[80px] h-[60px] bg-[var(--blob-purple)] rounded-[40%_60%_70%_30%/40%_50%_50%_60%] blob-animate">
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="hero-nav relative z-20 flex justify-between items-center px-10 md:px-16 pt-8 pb-4">
+                <div class="flex items-center gap-3">
+                    <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-16 w-16 object-contain">
+                    <span class="font-bold tracking-widest text-sm leading-tight">Yhana's<br>Cakes and Patries</span>
+                </div>
+
+                <div class="hidden md:flex gap-16 text-[13px] font-medium tracking-wide">
+                    <a href="#home" class="nav-link hover:opacity-70 transition-opacity">Home</a>
+                    <a href="#menu" class="nav-link hover:opacity-70 transition-opacity">Menu</a>
+                    <a href="#customized" class="nav-link hover:opacity-70 transition-opacity">Costumized</a>
+                    <a href="#reminders" class="nav-link hover:opacity-70 transition-opacity">Reminders</a>
+                    <a href="#about" class="nav-link hover:opacity-70 transition-opacity">About</a>
+                </div>
+                <div class="w-24"></div>
+            </div>
+
+            <main
+                class="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-8 px-10 md:px-1 pt-10 pb-28 items-center min-h-[75vh]">
+
+                <div class="pl-4">
+                    <h1 class="hero-title text-[5.5rem] leading-[1.1] text-[var(--text-dark)] mb-6">Yhana's Cakes and Patries</h1>
+                    <p class="hero-tagline font-bold text-[11px] tracking-[0.25em] mb-6">ANG CAKE NA HINDI NAKAKAUMAY</p>
+                    <p class="hero-text text-[13px] leading-relaxed max-w-[380px] mb-8 font-medium opacity-80">
+                        Craving for a taste of heaven? Look no further! Our luscious cakes are baked fresh daily with love and adorned with artistic designs that are sure to delight your taste buds and captivate your senses.
+                    </p>
+                    <a href="https://www.facebook.com/messages/t/YhanasCakesandPastries" target="_blank"
+                        class="hero-btn btn-shine inline-block bg-[var(--text-dark)] text-white px-8 py-3.5 rounded-xl text-[11px] font-bold tracking-[0.15em] hover:bg-[#33170c] transition-colors shadow-lg">
+                        ORDER NOW
+                    </a>
+                </div>
+
+                <div class="hero-image relative flex justify-end items-center pr-10">
+                    <div
+                        class="w-[680px] h-[550px] bg-[var(--blob-brown)] cake-frame flex justify-center items-center shadow-md">
+                        <img src="images/cake.jpg"
+                            alt="Chocolate Layer Cake" class="w-[93%] h-[93%] object-cover cake-frame">
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <svg class="line-art absolute top-[40%] left-6 w-12 h-12 -rotate-12 z-30 float-art" style="--rot:-12deg; animation-delay:0s;" viewBox="0 0 24 24">
+            <path d="M6 10h12M7 10l1 10h8l1-10M12 4a3 3 0 0 0-3 3v3h6V7a3 3 0 0 0-3-3z" />
+            <path d="M9 10v10M12 10v10M15 10v10" />
+        </svg>
+
+        <svg class="line-art absolute bottom-16 left-16 w-14 h-14 z-30 float-art" style="animation-delay:0.5s;" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" />
+            <circle cx="10" cy="10" r="1" fill="currentColor" />
+            <circle cx="14" cy="11" r="1" fill="currentColor" />
+            <circle cx="12" cy="14" r="1" fill="currentColor" />
+            <circle cx="9" cy="13" r="1" fill="currentColor" />
+            <circle cx="15" cy="14" r="1" fill="currentColor" />
+        </svg>
+
+        <svg class="line-art absolute bottom-6 left-[30%] w-32 h-32 z-30 float-art" style="animation-delay:1s;" viewBox="0 0 100 100">
+            <path d="M50 100 Q 40 50 20 20 Q 30 10 50 30 Q 70 10 80 20 Q 60 50 50 100" />
+            <path d="M50 70 Q 30 60 10 40 Q 15 30 30 45 Q 50 55 50 70" />
+            <circle cx="40" cy="30" r="1.5" fill="currentColor" />
+            <circle cx="45" cy="40" r="1.5" fill="currentColor" />
+            <circle cx="55" cy="25" r="1.5" fill="currentColor" />
+            <circle cx="60" cy="35" r="1.5" fill="currentColor" />
+        </svg>
+
+        <svg class="line-art absolute bottom-[25%] left-[45%] w-16 h-16 rotate-45 z-30 float-art" style="--rot:45deg; animation-delay:1.5s;" viewBox="0 0 24 24">
+            <path
+                d="M2 22l8-8 M10 14c-2-2-2-5 0-7s5-2 7 0 M10 14c2 2 5 2 7 0s2-5 0-7 M12 12c-1.5-1.5-1.5-4 0-5.5s4-1.5 5.5 0 M12 12c1.5 1.5 4 1.5 5.5 0s1.5-4 0-5.5" />
+        </svg>
+
+        <svg class="line-art absolute top-10 right-4 w-32 h-32 z-30 float-art" style="animation-delay:2s;" viewBox="0 0 100 100">
+            <path d="M10 100 Q 30 50 80 10" />
+            <path d="M40 70 Q 60 50 90 40 Q 85 30 65 40 Q 45 50 40 70" fill="transparent" />
+            <path d="M55 45 Q 70 20 95 15 Q 90 5 75 15 Q 60 25 55 45" fill="transparent" />
+            <line x1="60" y1="50" x2="65" y2="45" />
+            <line x1="75" y1="25" x2="80" y2="20" />
+        </svg>
+
+        <svg class="line-art absolute bottom-24 right-20 w-20 h-20 z-30 float-art" style="animation-delay:2.5s;" viewBox="0 0 100 100">
+            <path d="M20 70 L80 65 L75 40 L20 50 Z" />
+            <path d="M20 50 C 20 30 40 30 75 40" />
+            <path d="M20 60 L80 55" stroke-dasharray="2,2" />
+            <circle cx="50" cy="25" r="4" fill="currentColor" />
+            <path d="M50 25 Q 55 15 65 20" />
+        </svg>
+
+        <div class="absolute bottom-10 right-20 text-[12px] opacity-80 z-20 font-medium hidden md:block">
+
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 px-10 md:px-16 bg-white relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-[10%] left-6 w-[300px] h-[300px] bg-[var(--blob-beige)] rounded-full opacity-50 blob-animate"></div>
+        <div class="absolute top-[30%] right-6 w-[250px] h-[200px] bg-[var(--blob-purple)] blob-left-purple opacity-40 blob-animate-slow"></div>
+        <div class="absolute bottom-6 left-[40%] w-[350px] h-[180px] bg-[var(--blob-beige)] blob-top-beige opacity-40 blob-animate"></div>
+        <div class="absolute bottom-[20%] left-6 w-[120px] h-[120px] bg-[var(--blob-purple)] rounded-full opacity-30 blob-animate-slow"></div>
+        <div class="absolute top-[10%] right-[20%] w-[80px] h-[80px] bg-[var(--blob-brown)] rounded-[40%_60%_70%_30%/40%_50%_50%_60%] opacity-20 blob-animate"></div>
+        <!-- Line art decorations -->
+        <svg class="line-art absolute top-8 left-8 w-14 h-14 float-art" style="animation-delay:0s;" viewBox="0 0 24 24">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+            <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+        </svg>
+        <svg class="line-art absolute top-[15%] right-10 w-20 h-20 float-art" style="animation-delay:0.8s;" viewBox="0 0 24 24">
+            <path d="M12 4c-1.5 0-3 .5-3 2s1 2 3 2 3 .5 3 2-1.5 2-3 2"/>
+            <path d="M4 10h16"/>
+            <path d="M6 10v8c0 2 2 3 6 3s6-1 6-3v-8"/>
+            <circle cx="12" cy="6" r="1" fill="currentColor"/>
+        </svg>
+        <svg class="line-art absolute bottom-[20%] left-12 w-16 h-16 float-art" style="animation-delay:1.5s;" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <svg class="line-art absolute bottom-12 right-16 w-12 h-12 float-art" style="animation-delay:2s;" viewBox="0 0 24 24">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <svg class="line-art absolute top-[50%] right-[5%] w-10 h-10 rotate-12 float-art" style="animation-delay:1s;" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="reveal">
+                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2" style="font-family: 'Playfair Display', serif;">Our Menu<span class="section-title-line"></span></h2>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-2">FRESHLY BAKED WITH LOVE</p>
+                <p class="text-center text-sm opacity-50 mb-4">All cakes are 7x4 size unless stated otherwise</p>
+                <div class="flex justify-center mb-12">
+                    <div class="h-[2px] w-16 bg-[var(--blob-brown)] rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Chiffon Cakes Category -->
+            <div class="mb-16">
+                <div class="reveal flex items-center gap-4 mb-8">
+                    <div class="h-[1px] flex-1 bg-[var(--blob-brown)] opacity-30"></div>
+                    <h3 class="text-lg font-bold tracking-[0.15em] text-[var(--blob-brown)] uppercase" style="font-family: 'Playfair Display', serif;">Chiffon Cakes</h3>
+                    <div class="h-[1px] flex-1 bg-[var(--blob-brown)] opacity-30"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/mango.png" alt="Mango Cake" class="max-w-[140%] max-h-[140%] object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Mango Cake</h3>
+                            <p class="text-[12px] opacity-50 mt-1 mb-2">Light chiffon layered with fresh mango cream</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900 - &#8369;1,000</p>
+                        </div>
+                    </div>
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/chipon.png" alt="Vanilla Chiffon Cake" class="max-w-[110%] max-h-[110%] object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Vanilla Chiffon Cake</h3>
+                            <p class="text-[12px] opacity-50 mt-1 mb-2">Classic soft vanilla chiffon with buttercream frosting</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;850</p>
+                        </div>
+                    </div>
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/choco.png" alt="Choco Chiffon Cake" class="max-w-[105%] max-h-[105%] object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Choco Chiffon Cake</h3>
+                            <p class="text-[12px] opacity-50 mt-1 mb-2">Rich chocolate chiffon with creamy choco frosting</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900</p>
+                        </div>
+                    </div>
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/mocha.png" alt="Mocha Chiffon Cake" class="max-w-[110%] max-h-[110%] object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Mocha Chiffon Cake</h3>
+                            <p class="text-[12px] opacity-50 mt-1 mb-2">Coffee-infused chiffon with smooth mocha cream</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;850</p>
+                        </div>
+                    </div>
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/ube.png" alt="Ube Chiffon Cake" class="max-w-[70%] max-h-[70%] object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Ube Chiffon Cake</h3>
+                            <p class="text-[12px] opacity-50 mt-1 mb-2">Filipino favorite purple yam chiffon cake</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;850</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium Cakes Category -->
+            <div class="mb-16">
+                <div class="reveal flex items-center gap-4 mb-8">
+                    <div class="h-[1px] flex-1 bg-[var(--blob-brown)] opacity-30"></div>
+                    <h3 class="text-lg font-bold tracking-[0.15em] text-[var(--blob-brown)] uppercase" style="font-family: 'Playfair Display', serif;">Premium Cakes</h3>
+                    <div class="h-[1px] flex-1 bg-[var(--blob-brown)] opacity-30"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/chocomoist.png" alt="Chocomoist Cake" class="max-w-[140%] max-h-[140%] object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Chocomoist Cake</h3>
+                            <p class="text-[12px] opacity-50 mt-1 mb-2">Extra moist chocolate cake with ganache drizzle</p>
+                            <span class="inline-block bg-[var(--blob-brown)] text-white text-[10px] font-semibold px-3 py-1 rounded-full mb-2">BESTSELLER</span>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;1,500</p>
+                        </div>
+                    </div>
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/caramel.png" alt="Creamy Caramel Cake" class="max-w-[120%] max-h-[120%] object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Creamy Caramel Cake</h3>
+                            <p class="text-[12px] opacity-50 mt-1 mb-2">Buttery caramel layers with silky caramel drip</p>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;1,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cupcakes & Bundles Category -->
+            <div>
+                <div class="reveal flex items-center gap-4 mb-8">
+                    <div class="h-[1px] flex-1 bg-[var(--blob-brown)] opacity-30"></div>
+                    <h3 class="text-lg font-bold tracking-[0.15em] text-[var(--blob-brown)] uppercase" style="font-family: 'Playfair Display', serif;">Cupcakes & Bundles</h3>
+                    <div class="h-[1px] flex-1 bg-[var(--blob-brown)] opacity-30"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/cupcakes.png" alt="Chocomoist Cupcakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Chocomoist Cupcakes</h3>
+                            <p class="text-[12px] opacity-50 mt-1">Mini versions of our bestselling chocomoist cake</p>
+                            <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mt-2 mb-2">12 PCS</span>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;500</p>
+                        </div>
+                    </div>
+                    <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
+                        <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/bentowithcupcakes.png" alt="Bento Cake with Cupcakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="font-bold text-lg text-[var(--text-dark)]">Bento Cake with Cupcakes</h3>
+                            <p class="text-[12px] opacity-50 mt-1">Perfect gift bundle with bento cake + 8 cupcakes</p>
+                            <span class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mt-2 mb-2">8 PCS</span>
+                            <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;600</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order CTA -->
+            <div class="reveal mt-16 text-center">
+                <p class="text-[13px] opacity-60 mb-4">Want to place an order? Message us on Facebook!</p>
+                <a href="https://www.facebook.com/messages/t/YhanasCakesandPastries" target="_blank" class="inline-flex items-center gap-2 bg-[var(--text-dark)] text-white text-[13px] font-semibold px-8 py-3 rounded-full hover:bg-[#33170c] transition-colors btn-shine">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                    Order Now
                 </a>
-                <div class="toggle" onclick="toggleMenu()"></div>
-                <ul class="navigation">
-                    <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="250"><a class="nav"
-                            href="#home" onclick="toggleMenu()">Home</a></li>
-                    <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="300"><a class="nav"
-                            href="#menu" onclick="toggleMenu()">Menu</a></li>
-                    <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="350"><a class="nav"
-                            href="#customized" onclick="toggleMenu()">Customized</a></li>
-                    <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="400"><a class="nav"
-                            href="#reminders" onclick="toggleMenu()">Reminders</a></li>
-                    <li data-aos="fade-down" data-aos-easing="linear" data-aos-duration="450"><a class="nav"
-                            href="#about" onclick="toggleMenu()">About</a></li>
-                </ul>
-            </header>
-            <div class="content">
-                <div class="textBox">
-                    <h2 data-aos="fade-right" data-aos-easing="linear" data-aos-duration="700">Ang cake na hindi
-                        nakakaumay
-                    </h2>
-                    <p data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">Craving for a taste of
-                        heaven? Look no further! Our luscious cakes are baked fresh daily with love and adorned with
-                        artistic designs that are sure to delight your taste buds and captivate your senses.</p>
-                    <a data-aos="fade-right" data-aos-easing="linear" data-aos-duration="2000" href="#customized">View
-                        more</a>
-                </div>
-                <div class="imgBox" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="2500">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="images/2022052238213.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1642913209226.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1643698693636.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1646299883771.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1648721386311.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1651280294231.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1651911819612.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1653651644288.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/caramel.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/ube.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/2022052348213.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/2022052808213.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/1646567339259.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-shape-divider-bottom-1680759513">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                    preserveAspectRatio="none">
-                    <path
-                        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                        opacity=".25" class="shape-fill"></path>
-                    <path
-                        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                        opacity=".5" class="shape-fill"></path>
-                    <path
-                        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                        class="shape-fill"></path>
-                </svg>
             </div>
         </div>
-        <div class="component" id="menu">
-            <div class="title">
-                <h1>Menu</h1>
-                <p>Experience pure bliss with our luscious cakes, baked fresh daily with love, and adorned with artistic
-                    designs.</p>
+    </section>
+
+    <!-- Customized Section -->
+    <section id="customized" class="py-20 px-10 md:px-16 bg-white relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-6 right-6 w-[350px] h-[250px] bg-[var(--blob-brown)] blob-top-brown opacity-20 blob-animate-slow"></div>
+        <div class="absolute top-[50%] left-6 w-[200px] h-[300px] bg-[var(--blob-beige)] blob-left-purple opacity-50 blob-animate"></div>
+        <div class="absolute bottom-6 right-[30%] w-[300px] h-[200px] bg-[var(--blob-purple)] blob-bottom-brown opacity-30 blob-animate-slow"></div>
+        <div class="absolute top-[20%] left-[15%] w-[100px] h-[80px] bg-[var(--blob-purple)] rounded-full opacity-25 blob-animate"></div>
+        <div class="absolute bottom-[10%] right-6 w-[150px] h-[150px] bg-[var(--blob-beige)] rounded-full opacity-40 blob-animate-slow"></div>
+        <!-- Line art decorations -->
+        <svg class="line-art absolute top-10 right-10 w-16 h-16 float-art" style="animation-delay:0.3s;" viewBox="0 0 24 24">
+            <path d="M12 2a4 4 0 0 0-4 4v2H6l-2 12h16L18 8h-2V6a4 4 0 0 0-4-4z"/>
+            <path d="M12 2c0 0-2 1-2 3"/>
+            <path d="M12 2c0 0 2 1 2 3"/>
+            <circle cx="9" cy="5" r="0.8" fill="currentColor"/>
+            <circle cx="15" cy="5" r="0.8" fill="currentColor"/>
+            <circle cx="12" cy="6" r="0.8" fill="currentColor"/>
+        </svg>
+        <svg class="line-art absolute top-[20%] left-6 w-20 h-20 float-art" style="animation-delay:1s;" viewBox="0 0 100 100">
+            <path d="M50 10 Q 30 30 20 50 Q 30 45 40 55 Q 35 70 50 90"/>
+            <path d="M50 10 Q 70 30 80 50 Q 70 45 60 55 Q 65 70 50 90"/>
+            <circle cx="35" cy="35" r="2" fill="currentColor"/>
+            <circle cx="65" cy="35" r="2" fill="currentColor"/>
+            <circle cx="50" cy="50" r="2" fill="currentColor"/>
+        </svg>
+        <svg class="line-art absolute bottom-16 left-[10%] w-14 h-14 -rotate-12 float-art" style="animation-delay:1.8s;" viewBox="0 0 24 24">
+            <path d="M9.5 2A3.5 3.5 0 0 0 6 5.5V6H4v14h16V6h-2v-.5A3.5 3.5 0 0 0 14.5 2h-5z"/>
+            <path d="M6 10h12"/>
+            <path d="M12 6v4"/>
+        </svg>
+        <svg class="line-art absolute bottom-[25%] right-8 w-24 h-24 float-art" style="animation-delay:0.5s;" viewBox="0 0 100 100">
+            <path d="M50 95 Q 40 50 20 25 Q 30 15 50 35 Q 70 15 80 25 Q 60 50 50 95"/>
+            <path d="M35 40 Q 45 35 50 45"/>
+            <path d="M65 40 Q 55 35 50 45"/>
+        </svg>
+        <svg class="line-art absolute top-[60%] right-[15%] w-10 h-10 rotate-45 float-art" style="animation-delay:2.2s;" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="reveal">
+                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2" style="font-family: 'Playfair Display', serif;">Customized Cakes<span class="section-title-line"></span></h2>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-2">MADE JUST FOR YOU</p>
+                <p class="text-center text-sm opacity-50 mb-4">Tell us your theme and we'll bring it to life</p>
+                <div class="flex justify-center mb-14">
+                    <div class="h-[2px] w-16 bg-[var(--blob-brown)] rounded-full"></div>
+                </div>
             </div>
-            <div class="list">
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/2022052348213.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+
+            <div class="space-y-14">
+
+                <!-- Floral Cakes -->
+                <div class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8 md:p-10 flex flex-col justify-center">
+                            <span class="inline-block bg-[var(--blob-beige)] text-[var(--blob-brown)] text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-full mb-4 w-fit">POPULAR</span>
+                            <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-3" style="font-family: 'Playfair Display', serif;">Floral Cakes</h3>
+                            <p class="text-[13px] leading-relaxed opacity-70 mb-5">Elegant cakes adorned with beautiful buttercream or fondant flowers. Perfect for birthdays, weddings, and anniversaries. Each floral design is handcrafted with love.</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;1,500 &bull; Price varies by design</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 p-3">
+                            <div class="rounded-xl overflow-hidden"><img src="images/floral/1.png" alt="Floral Cake 1" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/floral/2.png" alt="Floral Cake 2" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/floral/3.png" alt="Floral Cake 3" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/floral/4.png" alt="Floral Cake 4" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/floral/5.png" alt="Floral Cake 5" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/floral/6.png" alt="Floral Cake 6" class="w-full h-full object-cover"></div>
+                        </div>
                     </div>
-                    <h3>Mango Cake (7x4)</h3>
-                    <p>₱ 900-1,000.00</p>
-                </div>
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/1643698693636.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <h3>Vanilla Chiffon Cake (7x4)</h3>
-                    <p>₱ 850.00</p>
-                </div>
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/1646567339259.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <h3>Choco Chiffon Cake (7x4)</h3>
-                    <p>₱ 900.00</p>
-                </div>
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/1653651644288.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <h3>Mocha Chiffon Cake (7x4)</h3>
-                    <p>₱ 850.00</p>
-                </div>
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/2022052238213.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <h3>Chocomoist Cake (7x4)</h3>
-                    <p>₱ 1,500.00</p>
                 </div>
 
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cupcakes.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+                <!-- Themed Cakes -->
+                <div class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="order-2 md:order-1 grid grid-cols-3 gap-2 p-3">
+                            <div class="rounded-xl overflow-hidden"><img src="images/themed/1.png" alt="Themed Cake 1" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/themed/2.png" alt="Themed Cake 2" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/themed/3.png" alt="Themed Cake 3" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/themed/4.png" alt="Themed Cake 4" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/themed/5.png" alt="Themed Cake 5" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/themed/6.png" alt="Themed Cake 6" class="w-full h-full object-cover"></div>
+                        </div>
+                        <div class="order-1 md:order-2 p-8 md:p-10 flex flex-col justify-center">
+                            <span class="inline-block bg-[var(--blob-beige)] text-[var(--blob-brown)] text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-full mb-4 w-fit">MOST REQUESTED</span>
+                            <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-3" style="font-family: 'Playfair Display', serif;">Themed Cakes</h3>
+                            <p class="text-[13px] leading-relaxed opacity-70 mb-5">From cartoon characters to your favorite movies and hobbies — we can create any theme you imagine! Great for kids' birthdays, debuts, and special occasions.</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;1,500 &bull; Price varies by design</p>
+                        </div>
                     </div>
-                    <h3>Chocomoist Cupcakes (12pcs)</h3>
-                    <p>₱ 500.00</p>
                 </div>
 
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/bentowithcupcakes.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <h3>Bento Cake with Cupcakes (8pcs)</h3>
-                    <p>₱ 600.00</p>
-                </div>
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/caramel.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <h3>Creamy Caramel Cake (7x4)</h3>
-                    <p>₱ 1,000.00</p>
-                </div>
-                <div class="listItem" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/ube.png" />
-                    <div>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <h3>Ube Chiffon Cake (7x4)</h3>
-                    <p>₱ 850.00</p>
-                </div>
-            </div>
-        </div>
-        <div class="custom" id="customized">
-            <div class="custom-shape-divider-top-1680828191">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                    preserveAspectRatio="none">
-                    <path
-                        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                        opacity=".25" class="shape-fill"></path>
-                    <path
-                        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                        opacity=".5" class="shape-fill"></path>
-                    <path
-                        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                        class="shape-fill"></path>
-                </svg>
-            </div>
-            <div class="title1">
-                <h1>Customized Cake</h1>
-                <p>Whether it's a birthday, anniversary, baby shower, or any other celebration, our customized cakes are
-                    sure to be the highlight of your event. Each cake is made with love and attention to detail,
-                    ensuring that it not only looks stunning but also tastes exquisite.</p>
-            </div>
-            <div class="floral">
-                <div class="textFloral">
-                    <h2 data-aos="fade-right" data-aos-easing="linear" data-aos-duration="700">Floral Cake
-                    </h2>
-                    <p data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">Whether you're
-                        celebrating a special occasion, surprising a loved one, or simply treating yourself, our floral
-                        cakes are sure to impress. With their unique and exquisite design, they make a perfect
-                        centerpiece for any event or a stunning gift that will leave a lasting impression.</p>
-                </div>
-                <div class="imgFloral" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="images/floral/1.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/2.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/3.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/4.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/5.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/6.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/7.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/8.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/floral/9.png" />
-                            </div>
+                <!-- Number Cakes -->
+                <div class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8 md:p-10 flex flex-col justify-center">
+                            <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-3" style="font-family: 'Playfair Display', serif;">Number Cakes</h3>
+                            <p class="text-[13px] leading-relaxed opacity-70 mb-5">Celebrate milestones with a cake shaped in your special number. Perfect for birthdays, anniversaries, and countdown celebrations. Available in any number combination.</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Starting at &#8369;1,800 &bull; Price varies by design</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 p-3">
+                            <div class="rounded-xl overflow-hidden"><img src="images/number/1.png" alt="Number Cake 1" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/number/2.png" alt="Number Cake 2" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/number/3.png" alt="Number Cake 3" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/number/4.png" alt="Number Cake 4" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/number/5.png" alt="Number Cake 5" class="w-full h-full object-cover"></div>
+                            <div class="rounded-xl overflow-hidden"><img src="images/number/6.png" alt="Number Cake 6" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="floral-reverse">
-                <div class="textFloral-reverse">
-                    <h2 data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="700">Themed Cake
-                    </h2>
-                    <p data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1500">Make your special occasion
-                        truly unforgettable with our extraordinary themed cakes. Order now and let us create a cake that
-                        will transport you to a world of imagination and wonder!</p>
-                </div>
-                <div class="imgFloral-reverse" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="images/themed/1.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/2.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/3.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/4.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/5.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/6.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/7.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/8.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/9.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/10.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/11.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/12.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/13.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/14.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/themed/15.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="floral">
-                <div class="textFloral">
-                    <h2 data-aos="fade-right" data-aos-easing="linear" data-aos-duration="700">Number Cake
-                    </h2>
-                    <p data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">Whether you're
-                        celebrating a birthday, anniversary, or any other significant occasion, our number cakes are
-                        custom-made to represent the age or milestone you're celebrating. Choose from a wide range of
-                        flavors, fillings, and designs to create a cake that is truly unique and meaningful.</p>
-                </div>
-                <div class="imgFloral" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="images/number/1.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/2.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/3.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/4.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/5.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/6.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/7.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/8.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/9.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/number/10.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="floral-reverse">
-                <div class="textFloral-reverse">
-                    <h2 data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="700">Ball Cake
-                    </h2>
-                    <p data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1500">Experience the enchantment
-                        of our mesmerizing ball cakes! Delight your taste buds with the irresistible flavors and
-                        exquisite designs of our premium ball cakes. Perfect for any celebration, our ball cakes are a
-                        blend of artistry and delectable taste. Made with love and attention to detail, our ball cakes
-                        are sure to captivate your senses and leave a lasting impression on your guests. Indulge in the
-                        magic of our ball cakes and elevate your special occasion to new heights.</p>
-                </div>
-                <div class="imgFloral-reverse" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="images/ball/1.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/ball/2.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/ball/3.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/ball/1.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/ball/2.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/ball/3.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="floral">
-                <div class="textFloral">
-                    <h2 data-aos="fade-right" data-aos-easing="linear" data-aos-duration="700">Butterfly Cake
-                    </h2>
-                    <p data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">Cakes should not only
-                        taste delicious but also inspire wonder and awe. Our butterfly cakes are a true masterpiece,
-                        combining exquisite taste with stunning design to create a whimsical and enchanting dessert that
-                        will captivate your senses.</p>
-                </div>
-                <div class="imgFloral" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/1.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/2.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/3.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/4.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/1.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/2.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/3.png" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/butterfly/4.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="others">
-                <div data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/1661677218192.png" />
-                    <h1>Money Cake</h1>
-                    <p>Our delicious money cake is not only a feast for the taste buds, but also a symbol of prosperity and abundance.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/1652533618801.png" />
-                    <h1>Chocolate Cake</h1>
-                    <p>Indulge in the ultimate chocolate lover's dream with our decadent chocolate cake.</p>
                 </div>
 
-                <div data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/1680933945130-copy.png" />
-                    <h1>Gender Reveal</h1>
-                    <p>It's time to share the exciting news with family and friends! Our gender reveal cake is the perfect way to announce the gender of your precious bundle of joy.</p>
+                <!-- Smaller Categories Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+                    <!-- Ball Cakes -->
+                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/ball/1.png" alt="Ball Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Ball Cakes</h3>
+                            <p class="text-[11px] opacity-50 mb-2">Sphere-shaped cakes for a unique celebration</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Price varies by design</p>
+                        </div>
+                    </div>
+                    <!-- Butterfly Cakes -->
+                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/butterfly/1.png" alt="Butterfly Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Butterfly Cakes</h3>
+                            <p class="text-[11px] opacity-50 mb-2">Delicate butterfly designs for a whimsical touch</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Price varies by design</p>
+                        </div>
+                    </div>
+                    <!-- Money Cakes -->
+                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/1653651644288.png" alt="Money Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Money Cakes</h3>
+                            <p class="text-[11px] opacity-50 mb-2">Surprise money-pull cakes for extra fun</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Price varies by design</p>
+                        </div>
+                    </div>
+                    <!-- Gender Reveal Cakes -->
+                    <div class="reveal bg-[var(--bg-color)] rounded-2xl overflow-hidden shadow-sm card-hover group">
+                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                            <img src="images/1680933945130-copy.png" alt="Gender Reveal Cakes" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 text-center">
+                            <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Gender Reveal Cakes</h3>
+                            <p class="text-[11px] opacity-50 mb-2">Pink or blue surprise inside!</p>
+                            <p class="text-[12px] font-semibold text-[var(--blob-brown)]">Price varies by design</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <div class="custom-shape-divider-bottom-1680759513">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                    preserveAspectRatio="none">
-                    <path
-                        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                        opacity=".25" class="shape-fill"></path>
-                    <path
-                        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                        opacity=".5" class="shape-fill"></path>
-                    <path
-                        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                        class="shape-fill"></path>
-                </svg>
+
+            <!-- Custom Order CTA -->
+            <div class="reveal mt-16 text-center p-10">
+                <h3 class="font-bold text-xl text-[var(--text-dark)] mb-2" style="font-family: 'Playfair Display', serif;">Have a design in mind?</h3>
+                <p class="text-[13px] opacity-60 mb-6 max-w-md mx-auto">Send us your inspiration photo and we'll give you a quote. We love bringing your cake dreams to life!</p>
+                <a href="https://www.facebook.com/messages/t/YhanasCakesandPastries" target="_blank" class="inline-flex items-center gap-2 bg-[var(--text-dark)] text-white text-[13px] font-semibold px-8 py-3 rounded-full hover:bg-[#33170c] transition-colors btn-shine">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                    Message Us
+                </a>
             </div>
         </div>
-        <div class="component" id="reminders" style="padding-bottom: 200px;">
-            <div class="title">
-                <h1>Reminders</h1>
-                <p>Caring for Your Cake - Tips for Serving and Storing Delicious Delights!</p>
+    </section>
+
+    <!-- Reminders Section -->
+    <section id="reminders" class="py-20 px-10 md:px-16 bg-white relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-6 left-[10%] w-[280px] h-[180px] bg-[var(--blob-beige)] blob-top-beige opacity-45 blob-animate"></div>
+        <div class="absolute top-[40%] right-6 w-[200px] h-[250px] bg-[var(--blob-brown)] blob-top-brown opacity-15 blob-animate-slow"></div>
+        <div class="absolute bottom-6 left-6 w-[180px] h-[180px] bg-[var(--blob-purple)] rounded-full opacity-30 blob-animate"></div>
+        <div class="absolute bottom-[15%] right-[25%] w-[90px] h-[70px] bg-[var(--blob-beige)] rounded-[40%_60%_70%_30%/40%_50%_50%_60%] opacity-40 blob-animate-slow"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="reveal">
+                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2" style="font-family: 'Playfair Display', serif;">Reminders<span class="section-title-line"></span></h2>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">CAKE CARE INSTRUCTIONS</p>
             </div>
-            <div class="reminders">
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/cakehand.png" />
-                    <h3>Pickup and carry the cake box from the bottom only.</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 stagger-children">
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/cakehand.png" alt="Carry from Bottom" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Carry from Bottom</h3>
+                    <p class="text-[12px] opacity-60">Pickup and carry the cake box from the bottom only. Keep the cake level at all times.</p>
                 </div>
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/cake.png" />
-                    <h3>Keep the cake level at all times including transport and refrigeration.</h3>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/car.png" alt="Air-Conditioned Transport" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Air-Conditioned Transport</h3>
+                    <p class="text-[12px] opacity-60">Transport in an air-conditioned vehicle.</p>
                 </div>
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/car.png" />
-                    <h3>Transport the cake in an air-conditioned vehicle away from loose objects.</h3>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/sun.png" alt="Keep Away from Heat" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Keep Away from Heat</h3>
+                    <p class="text-[12px] opacity-60">Keep away from sunlight, moisture, and heat.</p>
                 </div>
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/ref.png" />
-                    <h3>Store cake in the box in a refrigerator.</h3>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/ref.png" alt="Refrigerate" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Refrigerate</h3>
+                    <p class="text-[12px] opacity-60">Store in refrigerator to maintain freshness.</p>
                 </div>
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/sun.png" />
-                    <h3>Keep away form direct sunlight, moisture and heat when not in fridge.</h3>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/time.png" alt="Remove Before Serving" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Remove Before Serving</h3>
+                    <p class="text-[12px] opacity-60">Remove from refrigerator 1 hour before serving.</p>
                 </div>
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/time.png" />
-                    <h3>Take the cake out of the fridge 1 hour before serving and serve at room temperature.</h3>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/stand.png" alt="Use Cake Stand" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Use Cake Stand</h3>
+                    <p class="text-[12px] opacity-60">Use a sturdy cake stand when displaying.</p>
                 </div>
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/stand.png" />
-                    <h3>Use a sturdy cake stand at least an inch larger than the cake board.</h3>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/container.png" alt="Store Leftovers" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Store Leftovers</h3>
+                    <p class="text-[12px] opacity-60">Store leftovers in an airtight container in the refrigerator.</p>
                 </div>
-                <div class="reminders-item" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="250">
-                    <img src="images/cake icon/container.png" />
-                    <h3>Store the leftover cake in the fridge in an airtight container.</h3>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center reminder-icon">
+                        <img src="images/cake icon/cake.png" alt="Keep Level" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Keep Level</h3>
+                    <p class="text-[12px] opacity-60">Keep the cake level at all times during transport.</p>
                 </div>
             </div>
         </div>
-        <div class="component" id="about" style="margin-top: -10px; margin-bottom: -10px;">
-            <div class="title">
-                <h1>About Us</h1>
-                <p>Make every moment in life sweeter and more memorable with our cakes. Whether it's a birthday,
-                    wedding, anniversary, or any other celebration, we believe that a beautifully crafted cake has the
-                    power to bring joy, happiness, and create lasting memories.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-10 md:px-16 bg-[var(--bg-color)] relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-6 right-6 w-[300px] h-[250px] bg-[var(--blob-brown)] blob-top-brown opacity-20 blob-animate-slow"></div>
+        <div class="absolute top-[30%] left-6 w-[250px] h-[200px] bg-[var(--blob-purple)] blob-left-purple opacity-35 blob-animate"></div>
+        <div class="absolute bottom-6 right-[20%] w-[350px] h-[200px] bg-[var(--blob-brown)] blob-bottom-brown opacity-15 blob-animate-slow"></div>
+        <div class="absolute top-[15%] left-[40%] w-[100px] h-[80px] bg-[var(--blob-purple)] rounded-full opacity-25 blob-animate"></div>
+        <div class="absolute bottom-[5%] right-6 w-[200px] h-[200px] bg-[var(--blob-beige)] rounded-full opacity-50 blob-animate-slow"></div>
+        <!-- Line art decorations -->
+        <svg class="line-art absolute top-10 left-8 w-16 h-16 float-art" style="animation-delay:0.4s;" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <svg class="line-art absolute top-[15%] right-8 w-20 h-20 float-art" style="animation-delay:1.3s;" viewBox="0 0 100 100">
+            <path d="M50 10 C 30 10 10 30 10 50 C 10 70 30 90 50 90 C 70 90 90 70 90 50 C 90 30 70 10 50 10"/>
+            <path d="M50 30 L50 55 L65 65"/>
+            <circle cx="50" cy="50" r="3" fill="currentColor"/>
+        </svg>
+        <svg class="line-art absolute bottom-12 left-[8%] w-14 h-14 rotate-12 float-art" style="animation-delay:2s;" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <path d="M9 22V12h6v10"/>
+        </svg>
+        <svg class="line-art absolute bottom-[20%] right-10 w-12 h-12 -rotate-6 float-art" style="animation-delay:0.9s;" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <svg class="line-art absolute top-[55%] left-[5%] w-10 h-10 float-art" style="animation-delay:1.6s;" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="reveal">
+                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2" style="font-family: 'Playfair Display', serif;">About Us<span class="section-title-line"></span></h2>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">GET TO KNOW US</p>
             </div>
-            <div class="floral-reverse" style="padding-top: 50px; padding-bottom: 50px;">
-                <div>
-                    <div class="detail" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="300">
-                        <img src="./icon/map-marker-outline.svg" alt="" style="width: 30px;">
-                        <div>
-                            <p>
-                                Address
-                            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 reveal-left">
+                    <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-4" style="font-family: 'Playfair Display', serif;">Make every moment sweeter</h3>
+                    <p class="text-[13px] leading-relaxed opacity-80 mb-6">
+                        Make every moment in life sweeter and more memorable with our cakes. Whether it's birthdays, weddings, anniversaries, or any celebration - we craft each cake with love and care.
+                    </p>
+                    <div class="space-y-3 text-[13px]">
+                        <div class="flex items-start gap-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)" stroke-width="2" class="mt-0.5 shrink-0">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
                             <span>47 L. Geirosa Ave, Silangan, Calauan, Laguna 4012</span>
                         </div>
-                    </div>
-                    <div class="detail" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="500">
-                        <img src="./icon/phone.svg" alt="" style="width: 30px;">
-                        <div>
-                            <p>
-                                Mobile
-
-                            </p>
+                        <div class="flex items-start gap-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)" stroke-width="2" class="mt-0.5 shrink-0">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
                             <span>0955 140 0402 / 0906 232 7969</span>
                         </div>
-                    </div>
-                    <div class="detail" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                        <img src="./icon/facebook.svg" alt="" style="width: 30px;">
-                        <div>
-                            <p>
-                                Facebook
-                            </p>
-                            <span>/YhanasCakesandPastries</span>
+                        <div class="flex items-start gap-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)" stroke-width="2" class="mt-0.5 shrink-0">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                            </svg>
+                            <a href="https://www.facebook.com/YhanasCakesandPastries" target="_blank" class="hover:opacity-70 transition-opacity">Yhana's Cakes and Pastries</a>
                         </div>
                     </div>
                 </div>
-                <div class="imgFloral-reverse" data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="250">
-                    <iframe data-aos="fade-right" data-aos-ease="ease" data-aos-duration="2000"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d175078.84015535307!2d121.29999678177818!3d14.151826923911662!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd5d7e7b3a6b9d%3A0xd5132f3cc30ba642!2sYhana&#39;s%20Cakes%20and%20Pastries!5e0!3m2!1sen!2sph!4v1680932870278!5m2!1sen!2sph"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="order-1 md:order-2 flex flex-col gap-6 reveal-right">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3868.8!2d121.3177!3d14.2167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s47+L.+Geirosa+Ave%2C+Silangan%2C+Calauan%2C+Laguna+4012!5e0!3m2!1sen!2sph!4v1680000000000" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-    </div>
+    <!-- Footer -->
+    <footer class="bg-[var(--text-dark)] text-white py-8 px-10 text-center">
+        <p class="text-[12px] opacity-70">&copy; YhanasCakesandPastries. All Rights Reserved.</p>
+    </footer>
 
-    <!-- Messenger Chat Plugin Code -->
-    <div id="fb-root"></div>
-
-    <!-- Your Chat Plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
-
-    <script src="finisher-header.es5.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="app.js"></script>
+    <!-- Scroll Reveal Script -->
     <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "100646998803545");
-        chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
 
-    <!-- Your SDK code -->
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: 'v16.0'
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < windowHeight - 80) {
+                    el.classList.add('active');
+                }
             });
         };
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Active nav link highlight on scroll
+        const sections = document.querySelectorAll('section[id], div[id="home"]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 120;
+                if (window.scrollY >= top) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.opacity = '1';
+                    link.style.fontWeight = '700';
+                } else {
+                    link.style.opacity = '';
+                    link.style.fontWeight = '';
+                }
+            });
+        });
+
+        // Show fixed navbar and floating order button after scrolling past home
+        const navbarFixed = document.getElementById('navbar-fixed');
+        const homeSection = document.getElementById('home');
+        window.addEventListener('scroll', () => {
+            const homeBottom = homeSection.offsetTop + homeSection.offsetHeight;
+            if (window.scrollY >= homeBottom) {
+                navbarFixed.style.display = 'flex';
+            } else {
+                navbarFixed.style.display = 'none';
+            }
+        });
     </script>
 
-    <div class="footer">
-        &copy;
-        <script> document.write(new Date().getFullYear()) </script> YhanasCakesandPastries. All Rights Reserved.
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Full view">
     </div>
+
+    <script>
+        // Lightbox - click image to view fullscreen
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('#menu img, #customized img').forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
 </body>
 
 </html>
