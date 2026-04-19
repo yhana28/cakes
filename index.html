@@ -282,7 +282,7 @@
             <main
                 class="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-12 px-6 md:px-1 pt-8 pb-20 md:pb-28 items-center md:min-h-[75vh]">
 
-                <div class="text-center md:text-left md:pl-4 flex flex-col items-center md:items-start">
+                <div class="text-center md:text-left md:pl-4 flex flex-col items-center md:items-start order-2 md:order-1">
                     <h1
                         class="hero-title text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[1.1] text-[var(--text-dark)] mb-4">
                         Yhana's Cakes and Pastries
@@ -305,7 +305,7 @@
                     <p class="text-[10px] opacity-40 mt-2">Message us on Facebook to place your order</p>
                 </div>
 
-                <div class="hero-image hero-right">
+                <div class="hero-image hero-right order-1 md:order-2">
                     <div class="img-blob-wrap">
                         <div class="img-blob-border"></div>
                         <div class="img-blob-bg"></div>
@@ -695,10 +695,19 @@
                 </div>
             </div>
 
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterCakes('all')" data-filter="all" class="cake-filter-btn active-filter px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">ALL</button>
+                <button onclick="filterCakes('floral')" data-filter="floral" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">FLORAL</button>
+                <button onclick="filterCakes('themed')" data-filter="themed" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">THEMED</button>
+                <button onclick="filterCakes('number')" data-filter="number" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">NUMBER</button>
+                <button onclick="filterCakes('special')" data-filter="special" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">SPECIAL</button>
+            </div>
+
             <div class="space-y-14">
 
                 <!-- Floral Cakes -->
-                <div class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
+                <div data-category="floral" class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-8 md:p-10 flex flex-col justify-center">
                             <span
@@ -729,7 +738,7 @@
                 </div>
 
                 <!-- Themed Cakes -->
-                <div class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
+                <div data-category="themed" class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="order-2 md:order-1 grid grid-cols-3 gap-2 p-3">
                             <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/themed/1.png"
@@ -761,7 +770,7 @@
                 </div>
 
                 <!-- Number Cakes -->
-                <div class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
+                <div data-category="number" class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-8 md:p-10 flex flex-col justify-center">
                             <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-3"
@@ -790,7 +799,7 @@
                 </div>
 
                 <!-- Smaller Categories Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+                <div data-category="special" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
                     <!-- Ball Cakes -->
                     <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
                         <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
@@ -861,6 +870,170 @@
     </section>
 
     <!-- Reminders Section -->
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-10 md:px-16 bg-[var(--bg-color)] relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div
+            class="absolute top-6 right-6 w-[300px] h-[250px] bg-[var(--blob-brown)] blob-top-brown opacity-20 blob-animate-slow">
+        </div>
+        <div
+            class="absolute top-[30%] left-6 w-[250px] h-[200px] bg-[var(--blob-purple)] blob-left-purple opacity-35 blob-animate">
+        </div>
+        <div
+            class="absolute bottom-6 right-[20%] w-[350px] h-[200px] bg-[var(--blob-brown)] blob-bottom-brown opacity-15 blob-animate-slow">
+        </div>
+        <div
+            class="absolute top-[15%] left-[40%] w-[100px] h-[80px] bg-[var(--blob-purple)] rounded-full opacity-25 blob-animate">
+        </div>
+        <div
+            class="absolute bottom-[5%] right-6 w-[200px] h-[200px] bg-[var(--blob-beige)] rounded-full opacity-50 blob-animate-slow">
+        </div>
+        <!-- Line art decorations -->
+        <svg class="line-art absolute top-10 left-8 w-16 h-16 float-art" style="animation-delay:0.4s;"
+            viewBox="0 0 24 24">
+            <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+        <svg class="line-art absolute top-[15%] right-8 w-20 h-20 float-art" style="animation-delay:1.3s;"
+            viewBox="0 0 100 100">
+            <path d="M50 10 C 30 10 10 30 10 50 C 10 70 30 90 50 90 C 70 90 90 70 90 50 C 90 30 70 10 50 10" />
+            <path d="M50 30 L50 55 L65 65" />
+            <circle cx="50" cy="50" r="3" fill="currentColor" />
+        </svg>
+        <svg class="line-art absolute bottom-12 left-[8%] w-14 h-14 rotate-12 float-art" style="animation-delay:2s;"
+            viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <path d="M9 22V12h6v10" />
+        </svg>
+        <svg class="line-art absolute bottom-[20%] right-10 w-12 h-12 -rotate-6 float-art" style="animation-delay:0.9s;"
+            viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <svg class="line-art absolute top-[55%] left-[5%] w-10 h-10 float-art" style="animation-delay:1.6s;"
+            viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="reveal">
+                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2"
+                    style="font-family: 'Playfair Display', serif;">About Us<span class="section-title-line"></span>
+                </h2>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">GET TO KNOW US</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 reveal-left">
+                    <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-4"
+                        style="font-family: 'Playfair Display', serif;">Make every moment sweeter</h3>
+                    <p class="text-[13px] leading-relaxed opacity-80 mb-6">
+                        Make every moment in life sweeter and more memorable with our cakes. Whether it's birthdays,
+                        weddings, anniversaries, or any celebration - we craft each cake with love and care.
+                    </p>
+                    <div class="space-y-3 text-[13px]">
+                        <div class="flex items-start gap-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
+                                stroke-width="2" class="mt-0.5 shrink-0">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <span>47 L. Geirosa Ave, Silangan, Calauan, Laguna 4012</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
+                                stroke-width="2" class="mt-0.5 shrink-0">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <a href="tel:+639551400402" class="hover:opacity-70 transition-opacity">0955 140 0402</a> / <a href="tel:+639062327969" class="hover:opacity-70 transition-opacity">0906 232 7969</a>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
+                                stroke-width="2" class="mt-0.5 shrink-0">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                            </svg>
+                            <a href="https://www.facebook.com/YhanasCakesandPastries" target="_blank"
+                                class="hover:opacity-70 transition-opacity">Yhana's Cakes and Pastries</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 flex flex-col gap-6 reveal-right">
+                    <div class="w-full rounded-2xl overflow-hidden shadow-lg">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3868.8!2d121.3177!3d14.2167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s47+L.+Geirosa+Ave%2C+Silangan%2C+Calauan%2C+Laguna+4012!5e0!3m2!1sen!2sph!4v1680000000000"
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-10 md:px-16 bg-[var(--bg-color)] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="reveal">
+                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2"
+                    style="font-family: 'Playfair Display', serif;">What They Say<span
+                        class="section-title-line"></span></h2>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">HAPPY CUSTOMERS</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
+                    </div>
+                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Sobrang sarap ng mango cake! Fresh na fresh
+                        at hindi masyadong matamis. Lagi kaming nag-oorder dito for special occasions."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-9 h-9 rounded-full bg-[var(--blob-beige)] flex items-center justify-center text-[var(--blob-brown)] font-bold text-sm">
+                            A</div>
+                        <div>
+                            <p class="font-bold text-[13px] text-[var(--text-dark)]">Anna R.</p>
+                            <p class="text-[11px] opacity-50">Calauan, Laguna</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
+                    </div>
+                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Pinag-order ko yung customized floral cake
+                        for my debut and lahat ng guests napuri! Ang ganda at ang sarap. Highly recommended!"</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-9 h-9 rounded-full bg-[var(--blob-beige)] flex items-center justify-center text-[var(--blob-brown)] font-bold text-sm">
+                            M</div>
+                        <div>
+                            <p class="font-bold text-[13px] text-[var(--text-dark)]">Marie C.</p>
+                            <p class="text-[11px] opacity-50">Calauan, Laguna</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-sm">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
+                    </div>
+                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Chocomoist cake is life! Sobrang moist at
+                        masarap. Sulit na sulit ang presyo. Ito na ang bilhin ko every birthday ng pamilya ko."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-9 h-9 rounded-full bg-[var(--blob-beige)] flex items-center justify-center text-[var(--blob-brown)] font-bold text-sm">
+                            J</div>
+                        <div>
+                            <p class="font-bold text-[13px] text-[var(--text-dark)]">Jay P.</p>
+                            <p class="text-[11px] opacity-50">Calauan, Laguna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section id="reminders" class="py-20 px-10 md:px-16 bg-white relative overflow-hidden">
         <!-- Decorative blobs -->
         <div
@@ -948,168 +1121,6 @@
                     </div>
                     <h3 class="font-bold text-sm text-[var(--text-dark)] mb-2">Consume Within 3 Days</h3>
                     <p class="text-[12px] opacity-60">For best taste and quality, consume the cake within 3 days.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 px-10 md:px-16 bg-[var(--bg-color)] relative overflow-hidden">
-        <!-- Decorative blobs -->
-        <div
-            class="absolute top-6 right-6 w-[300px] h-[250px] bg-[var(--blob-brown)] blob-top-brown opacity-20 blob-animate-slow">
-        </div>
-        <div
-            class="absolute top-[30%] left-6 w-[250px] h-[200px] bg-[var(--blob-purple)] blob-left-purple opacity-35 blob-animate">
-        </div>
-        <div
-            class="absolute bottom-6 right-[20%] w-[350px] h-[200px] bg-[var(--blob-brown)] blob-bottom-brown opacity-15 blob-animate-slow">
-        </div>
-        <div
-            class="absolute top-[15%] left-[40%] w-[100px] h-[80px] bg-[var(--blob-purple)] rounded-full opacity-25 blob-animate">
-        </div>
-        <div
-            class="absolute bottom-[5%] right-6 w-[200px] h-[200px] bg-[var(--blob-beige)] rounded-full opacity-50 blob-animate-slow">
-        </div>
-        <!-- Line art decorations -->
-        <svg class="line-art absolute top-10 left-8 w-16 h-16 float-art" style="animation-delay:0.4s;"
-            viewBox="0 0 24 24">
-            <path
-                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" />
-        </svg>
-        <svg class="line-art absolute top-[15%] right-8 w-20 h-20 float-art" style="animation-delay:1.3s;"
-            viewBox="0 0 100 100">
-            <path d="M50 10 C 30 10 10 30 10 50 C 10 70 30 90 50 90 C 70 90 90 70 90 50 C 90 30 70 10 50 10" />
-            <path d="M50 30 L50 55 L65 65" />
-            <circle cx="50" cy="50" r="3" fill="currentColor" />
-        </svg>
-        <svg class="line-art absolute bottom-12 left-[8%] w-14 h-14 rotate-12 float-art" style="animation-delay:2s;"
-            viewBox="0 0 24 24">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <path d="M9 22V12h6v10" />
-        </svg>
-        <svg class="line-art absolute bottom-[20%] right-10 w-12 h-12 -rotate-6 float-art" style="animation-delay:0.9s;"
-            viewBox="0 0 24 24">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-        <svg class="line-art absolute top-[55%] left-[5%] w-10 h-10 float-art" style="animation-delay:1.6s;"
-            viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="reveal">
-                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2"
-                    style="font-family: 'Playfair Display', serif;">About Us<span class="section-title-line"></span>
-                </h2>
-                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">GET TO KNOW US</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 reveal-left">
-                    <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-4"
-                        style="font-family: 'Playfair Display', serif;">Make every moment sweeter</h3>
-                    <p class="text-[13px] leading-relaxed opacity-80 mb-6">
-                        Make every moment in life sweeter and more memorable with our cakes. Whether it's birthdays,
-                        weddings, anniversaries, or any celebration - we craft each cake with love and care.
-                    </p>
-                    <div class="space-y-3 text-[13px]">
-                        <div class="flex items-start gap-3">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
-                                stroke-width="2" class="mt-0.5 shrink-0">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span>47 L. Geirosa Ave, Silangan, Calauan, Laguna 4012</span>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
-                                stroke-width="2" class="mt-0.5 shrink-0">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                            <span>0955 140 0402 / 0906 232 7969</span>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
-                                stroke-width="2" class="mt-0.5 shrink-0">
-                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                            </svg>
-                            <a href="https://www.facebook.com/YhanasCakesandPastries" target="_blank"
-                                class="hover:opacity-70 transition-opacity">Yhana's Cakes and Pastries</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2 flex flex-col gap-6 reveal-right">
-                    <div class="w-full rounded-2xl overflow-hidden shadow-lg">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3868.8!2d121.3177!3d14.2167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s47+L.+Geirosa+Ave%2C+Silangan%2C+Calauan%2C+Laguna+4012!5e0!3m2!1sen!2sph!4v1680000000000"
-                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-20 px-10 md:px-16 bg-[var(--bg-color)] relative overflow-hidden">
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="reveal">
-                <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2"
-                    style="font-family: 'Playfair Display', serif;">What They Say<span
-                        class="section-title-line"></span></h2>
-                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">HAPPY CUSTOMERS</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
-                <div class="bg-white rounded-3xl p-8 shadow-sm">
-                    <div class="flex gap-1 mb-4">
-                        <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
-                    </div>
-                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Sobrang sarap ng mango cake! Fresh na fresh
-                        at hindi masyadong matamis. Lagi kaming nag-oorder dito for special occasions."</p>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-9 h-9 rounded-full bg-[var(--blob-beige)] flex items-center justify-center text-[var(--blob-brown)] font-bold text-sm">
-                            A</div>
-                        <div>
-                            <p class="font-bold text-[13px] text-[var(--text-dark)]">Anna R.</p>
-                            <p class="text-[11px] opacity-50">Calauan, Laguna</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-3xl p-8 shadow-sm">
-                    <div class="flex gap-1 mb-4">
-                        <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
-                    </div>
-                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Pinag-order ko yung customized floral cake
-                        for my debut and lahat ng guests napuri! Ang ganda at ang sarap. Highly recommended!"</p>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-9 h-9 rounded-full bg-[var(--blob-beige)] flex items-center justify-center text-[var(--blob-brown)] font-bold text-sm">
-                            M</div>
-                        <div>
-                            <p class="font-bold text-[13px] text-[var(--text-dark)]">Marie C.</p>
-                            <p class="text-[11px] opacity-50">Calauan, Laguna</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-3xl p-8 shadow-sm">
-                    <div class="flex gap-1 mb-4">
-                        <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
-                    </div>
-                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Chocomoist cake is life! Sobrang moist at
-                        masarap. Sulit na sulit ang presyo. Ito na ang bilhin ko every birthday ng pamilya ko."</p>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-9 h-9 rounded-full bg-[var(--blob-beige)] flex items-center justify-center text-[var(--blob-brown)] font-bold text-sm">
-                            J</div>
-                        <div>
-                            <p class="font-bold text-[13px] text-[var(--text-dark)]">Jay P.</p>
-                            <p class="text-[11px] opacity-50">Calauan, Laguna</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

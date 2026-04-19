@@ -16,6 +16,18 @@ function setOrderLinks() {
 setOrderLinks();
 document.addEventListener('DOMContentLoaded', setOrderLinks);
 
+/* Gallery category filter */
+function filterCakes(category) {
+    document.querySelectorAll('[data-category]').forEach(el => {
+        const match = category === 'all' || el.dataset.category === category;
+        el.style.display = match ? '' : 'none';
+    });
+    document.querySelectorAll('.cake-filter-btn').forEach(btn => {
+        btn.classList.toggle('active-filter', btn.dataset.filter === category);
+    });
+}
+window.filterCakes = filterCakes;
+
 /* Expose globally so inline onclick="toggleMobileMenu()" keeps working */
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
@@ -191,15 +203,31 @@ window.toggleMobileMenu = toggleMobileMenu;
 })();
 
 /* ============================================
+   Hide floating ORDER NOW when another order button is visible
+   ============================================ */
+(() => {
+    const floatingBtn = document.getElementById('floating-order-btn');
+    if (!floatingBtn) return;
+    const targets = document.querySelectorAll('.order-link:not(#floating-order-btn)');
+    if (!targets.length) return;
+    const obs = new IntersectionObserver(entries => {
+        const anyVisible = entries.some(e => e.isIntersecting);
+        floatingBtn.style.opacity = anyVisible ? '0' : '1';
+        floatingBtn.style.pointerEvents = anyVisible ? 'none' : 'auto';
+    }, { threshold: 0.5 });
+    targets.forEach(el => obs.observe(el));
+})();
+
+/* ============================================
    Page load — loader, year, contact number
    ============================================ */
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if (loader) {
         loader.style.pointerEvents = 'none';
-        loader.style.transition = 'opacity 0.6s ease';
+        loader.style.transition = 'opacity 0.3s ease';
         loader.style.opacity = '0';
-        setTimeout(() => { loader.style.display = 'none'; }, 600);
+        setTimeout(() => { loader.style.display = 'none'; }, 300);
     }
 
     const yearEl = document.getElementById('current-year');

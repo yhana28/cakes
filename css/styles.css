@@ -364,6 +364,21 @@ svg.line-art {
     height: 70%;
 }
 
+/* ===== Gallery filter tabs ===== */
+.cake-filter-btn {
+    background: var(--blob-beige);
+    color: var(--blob-brown);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+.cake-filter-btn:hover {
+    border-color: var(--blob-brown);
+}
+.cake-filter-btn.active-filter {
+    background: var(--blob-brown);
+    color: white;
+}
+
 @media (max-width: 768px) {
     .img-blob-wrap {
         width: 340px;
