@@ -208,14 +208,34 @@ window.toggleMobileMenu = toggleMobileMenu;
 (() => {
     const floatingBtn = document.getElementById('floating-order-btn');
     if (!floatingBtn) return;
+
+    let homeVisible = true;
+    let orderBtnVisible = false;
+
+    function updateFloating() {
+        const hide = homeVisible || orderBtnVisible;
+        floatingBtn.style.opacity = hide ? '0' : '1';
+        floatingBtn.style.pointerEvents = hide ? 'none' : 'auto';
+    }
+
+    // Hide when home section is visible
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+        new IntersectionObserver(entries => {
+            homeVisible = entries[0].isIntersecting;
+            updateFloating();
+        }, { threshold: 0.1 }).observe(homeSection);
+    }
+
+    // Hide when another ORDER button is on screen
     const targets = document.querySelectorAll('.order-link:not(#floating-order-btn)');
-    if (!targets.length) return;
-    const obs = new IntersectionObserver(entries => {
-        const anyVisible = entries.some(e => e.isIntersecting);
-        floatingBtn.style.opacity = anyVisible ? '0' : '1';
-        floatingBtn.style.pointerEvents = anyVisible ? 'none' : 'auto';
-    }, { threshold: 0.5 });
-    targets.forEach(el => obs.observe(el));
+    if (targets.length) {
+        const orderObs = new IntersectionObserver(entries => {
+            orderBtnVisible = entries.some(e => e.isIntersecting);
+            updateFloating();
+        }, { threshold: 0.5 });
+        targets.forEach(el => orderObs.observe(el));
+    }
 })();
 
 /* ============================================
