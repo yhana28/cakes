@@ -2,6 +2,16 @@
    Yhana's Cakes and Pastries — main script
    ============================================ */
 
+/* Device-aware Messenger links
+   Mobile (m.me) opens the app; desktop (facebook.com/messages) opens web */
+(() => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const link = isMobile
+        ? 'https://m.me/YhanasCakesandPastries'
+        : 'https://www.facebook.com/messages/t/YhanasCakesandPastries';
+    document.querySelectorAll('.order-link').forEach(el => { el.href = link; });
+})();
+
 /* Expose globally so inline onclick="toggleMobileMenu()" keeps working */
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
