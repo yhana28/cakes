@@ -13,6 +13,7 @@ function setOrderLinks() {
         : 'https://www.facebook.com/messages/t/YhanasCakesandPastries';
     document.querySelectorAll('.order-link').forEach(el => { el.href = link; });
 }
+setOrderLinks();
 document.addEventListener('DOMContentLoaded', setOrderLinks);
 
 /* Expose globally so inline onclick="toggleMobileMenu()" keeps working */
