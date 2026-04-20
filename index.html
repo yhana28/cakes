@@ -186,7 +186,8 @@
 
     <!-- Loading Screen -->
     <div id="loader" class="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-[var(--bg-color)]">
-        <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="w-20 h-20 object-contain mb-4 animate-pulse" width="500" height="500">
+        <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="w-20 h-20 object-contain mb-4 animate-pulse"
+            width="500" height="500">
         <p class="text-[12px] font-bold tracking-[0.3em] text-[var(--blob-brown)]">YHANA'S CAKES AND PASTRIES</p>
     </div>
 
@@ -201,10 +202,10 @@
             style="font-size:1.1rem;font-weight:600;color:#462111;text-decoration:none;">Menu</a>
         <a href="#customized" class="mobile-nav-link"
             style="font-size:1.1rem;font-weight:600;color:#462111;text-decoration:none;">Customized</a>
-        <a href="#reminders" class="mobile-nav-link"
-            style="font-size:1.1rem;font-weight:600;color:#462111;text-decoration:none;">Reminders</a>
         <a href="#about" class="mobile-nav-link"
             style="font-size:1.1rem;font-weight:600;color:#462111;text-decoration:none;">About</a>
+        <a href="#reminders" class="mobile-nav-link"
+            style="font-size:1.1rem;font-weight:600;color:#462111;text-decoration:none;">Reminders</a>
         <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link"
             style="margin-top:1rem;background:#462111;color:white;padding:10px 24px;border-radius:999px;font-size:0.75rem;font-weight:700;text-decoration:none;letter-spacing:0.1em;">ORDER
             NOW</a>
@@ -215,17 +216,24 @@
         class="nav-fixed flex justify-between items-center px-10 md:px-16 transition-all duration-300"
         style="display: none;">
         <div class="flex items-center gap-3">
-            <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-12 w-12 object-contain" width="500" height="500">
+            <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-12 w-12 object-contain" width="500"
+                height="500">
             <span class="font-bold tracking-widest text-sm leading-tight">Yhana's<br>Cakes and Pastries</span>
         </div>
         <div class="hidden md:flex gap-16 text-[13px] font-medium tracking-wide">
             <a href="#home" class="nav-link hover:opacity-70 transition-opacity">Home</a>
             <a href="#menu" class="nav-link hover:opacity-70 transition-opacity">Menu</a>
             <a href="#customized" class="nav-link hover:opacity-70 transition-opacity">Customized</a>
-            <a href="#reminders" class="nav-link hover:opacity-70 transition-opacity">Reminders</a>
             <a href="#about" class="nav-link hover:opacity-70 transition-opacity">About</a>
+            <a href="#reminders" class="nav-link hover:opacity-70 transition-opacity">Reminders</a>
         </div>
-        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+            class="order-link hidden md:inline-flex items-center gap-2 bg-[var(--text-dark)] text-white px-6 py-2.5 rounded-full text-[11px] font-bold tracking-[0.15em] hover:bg-[#33170c] transition-colors">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.907 1.453 5.504 3.727 7.196V22l3.405-1.868c.91.252 1.871.387 2.868.387 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.07 12.457l-2.55-2.72-4.97 2.72 5.465-5.8 2.613 2.72 4.907-2.72-5.465 5.8z"/></svg>
+            ORDER NOW
+        </a>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-controls="mobile-menu"
+            aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </nav>
@@ -254,7 +262,8 @@
         <div class="max-w-7xl mx-auto">
             <div class="hero-nav relative z-50 flex justify-between items-center px-10 md:px-16 pt-8 pb-4">
                 <div class="flex items-center gap-3">
-                    <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-16 w-16 object-contain" width="500" height="500">
+                    <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-16 w-16 object-contain"
+                        width="500" height="500">
                     <span class="font-bold tracking-widest text-sm leading-tight">Yhana's<br>Cakes and Pastries</span>
                 </div>
 
@@ -262,10 +271,11 @@
                     <a href="#home" class="nav-link hover:opacity-70 transition-opacity">Home</a>
                     <a href="#menu" class="nav-link hover:opacity-70 transition-opacity">Menu</a>
                     <a href="#customized" class="nav-link hover:opacity-70 transition-opacity">Customized</a>
-                    <a href="#reminders" class="nav-link hover:opacity-70 transition-opacity">Reminders</a>
                     <a href="#about" class="nav-link hover:opacity-70 transition-opacity">About</a>
+                    <a href="#reminders" class="nav-link hover:opacity-70 transition-opacity">Reminders</a>
                 </div>
-                <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+                <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open menu"
+                    aria-controls="mobile-menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -274,24 +284,37 @@
             <main
                 class="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-12 px-6 md:px-1 pt-8 pb-20 md:pb-28 items-center md:min-h-[75vh]">
 
-                <div class="text-center md:text-left md:pl-4 flex flex-col items-center md:items-start order-2 md:order-1">
+                <div
+                    class="text-center md:text-left md:pl-4 flex flex-col items-center md:items-start order-2 md:order-1">
                     <h1
                         class="hero-title text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[1.1] text-[var(--text-dark)] mb-4">
                         Yhana's Cakes and Pastries
-                        <span class="block text-[0.95rem] sm:text-[1rem] md:text-[1.1rem] font-medium tracking-wide mt-3 opacity-70">Custom Cakes &amp; Pastries in Calauan, Laguna</span>
+                        <span
+                            class="block text-[0.95rem] sm:text-[1rem] md:text-[1.1rem] font-medium tracking-wide mt-3 opacity-70">Because
+                            every celebration deserves a cake made just for them</span>
                     </h1>
-                    <p class="hero-tagline font-bold text-[11px] tracking-[0.25em] mb-6" lang="tl">ANG CAKE NA HINDI NAKAKAUMAY
+                    <p class="hero-tagline font-bold text-[11px] tracking-[0.25em] mb-6" lang="tl">ANG CAKE NA HINDI
+                        NAKAKAUMAY
                     </p>
                     <p class="hero-text text-[13px] leading-relaxed max-w-[380px] mb-4 font-medium opacity-80">
-                        Make your celebration unforgettable. Freshly baked daily, custom-designed for birthdays, weddings &amp; debuts. Cakes starting at <strong>₱850</strong> — ready in 2–3 days.
+                        Skip the generic chain cake. Every Yhana's cake is freshly baked and custom-designed for
+                        <em>your</em> occasion — birthdays, weddings, debuts &amp; more. Starting at
+                        <strong>₱850</strong>, ready in 2–3 days.
                     </p>
-                    <div class="flex items-center gap-1 mb-5 text-[12px] font-medium opacity-70">
-                        <span class="text-[var(--blob-brown)]">★★★★★</span>
-                        <span>Loved by customers in Calauan &amp; Laguna</span>
+                    <div class="flex flex-col gap-1 mb-5">
+                        <div class="flex items-center gap-1 text-[12px] font-medium opacity-70">
+                            <span class="text-[var(--blob-brown)]">★★★★★</span>
+                            <span>5.0 · Loved by families in Calauan &amp; Laguna</span>
+                        </div>
+                        <p class="text-[11px] opacity-50 italic max-w-[360px]">"Ito na ang bilhin ko every birthday ng
+                            pamilya ko." — Jay P.</p>
                     </div>
                     <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
                         class="order-link hero-btn btn-shine inline-flex items-center justify-center gap-2 bg-[var(--text-dark)] text-white px-10 py-4 rounded-xl text-[11px] font-bold tracking-[0.15em] hover:bg-[#33170c] transition-colors shadow-lg">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.907 1.453 5.504 3.727 7.196V22l3.405-1.868c.91.252 1.871.387 2.868.387 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.07 12.457l-2.55-2.72-4.97 2.72 5.465-5.8 2.613 2.72 4.907-2.72-5.465 5.8z"/></svg>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
+                            <path
+                                d="M12 2C6.477 2 2 6.145 2 11.243c0 2.907 1.453 5.504 3.727 7.196V22l3.405-1.868c.91.252 1.871.387 2.868.387 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.07 12.457l-2.55-2.72-4.97 2.72 5.465-5.8 2.613 2.72 4.907-2.72-5.465 5.8z" />
+                        </svg>
                         ORDER NOW
                     </a>
                     <p class="text-[10px] opacity-40 mt-2">Message us on Facebook to place your order</p>
@@ -303,20 +326,22 @@
                         <div class="img-blob-bg"></div>
                         <div class="img-blob-clip">
                             <img src="images/customized/floral/cake.jpg" alt="Chocolate Layer Cake" fetchpriority="high"
-                                onerror="this.style.display='none'; this.parentElement.querySelector('.cake-placeholder').style.display='flex';" width="720" height="900">
+                                onerror="this.style.display='none'; this.parentElement.querySelector('.cake-placeholder').style.display='flex';"
+                                width="720" height="900">
                             <div class="cake-placeholder" style="display:none;">
-                                <svg class="cake-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <ellipse cx="100" cy="165" rx="65" ry="15" fill="rgba(0,0,0,0.3)"/>
-                                    <rect x="40" y="110" width="120" height="50" rx="8" fill="#7A4020"/>
-                                    <path d="M35 115 Q100 100 165 115" stroke="#C8845A" stroke-width="3" fill="none"/>
-                                    <rect x="45" y="85" width="110" height="30" rx="6" fill="#9B5530"/>
-                                    <path d="M40 90 Q100 78 160 90" stroke="#C8845A" stroke-width="2.5" fill="none"/>
-                                    <rect x="50" y="60" width="100" height="28" rx="5" fill="#8B4A28"/>
-                                    <path d="M45 65 Q100 55 155 65" stroke="#D4956A" stroke-width="2.5" fill="none"/>
-                                    <ellipse cx="100" cy="57" rx="52" ry="13" fill="#B87050"/>
-                                    <path d="M60 57 Q100 45 140 57" stroke="#E0A878" stroke-width="2" fill="none"/>
-                                    <rect x="88" y="155" width="24" height="18" rx="3" fill="#2C1008"/>
-                                    <ellipse cx="100" cy="175" rx="32" ry="7" fill="#2C1008"/>
+                                <svg class="cake-svg" viewBox="0 0 200 200" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="100" cy="165" rx="65" ry="15" fill="rgba(0,0,0,0.3)" />
+                                    <rect x="40" y="110" width="120" height="50" rx="8" fill="#7A4020" />
+                                    <path d="M35 115 Q100 100 165 115" stroke="#C8845A" stroke-width="3" fill="none" />
+                                    <rect x="45" y="85" width="110" height="30" rx="6" fill="#9B5530" />
+                                    <path d="M40 90 Q100 78 160 90" stroke="#C8845A" stroke-width="2.5" fill="none" />
+                                    <rect x="50" y="60" width="100" height="28" rx="5" fill="#8B4A28" />
+                                    <path d="M45 65 Q100 55 155 65" stroke="#D4956A" stroke-width="2.5" fill="none" />
+                                    <ellipse cx="100" cy="57" rx="52" ry="13" fill="#B87050" />
+                                    <path d="M60 57 Q100 45 140 57" stroke="#E0A878" stroke-width="2" fill="none" />
+                                    <rect x="88" y="155" width="24" height="18" rx="3" fill="#2C1008" />
+                                    <ellipse cx="100" cy="175" rx="32" ry="7" fill="#2C1008" />
                                 </svg>
                             </div>
                         </div>
@@ -377,6 +402,103 @@
 
     </div>
 
+    <!-- How It Works Section -->
+    <section class="py-20 px-10 md:px-16 bg-[var(--bg-color)] relative overflow-hidden">
+        <div
+            class="absolute top-0 right-[-5%] w-[220px] h-[180px] bg-[var(--blob-brown)] opacity-10 blob-top-brown blob-animate-slow">
+        </div>
+        <div
+            class="absolute bottom-0 left-[-5%] w-[200px] h-[160px] bg-[var(--blob-beige)] opacity-50 blob-bottom-brown blob-animate">
+        </div>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="font-bold text-[2rem] md:text-[2.5rem] text-[var(--text-dark)] mb-2"
+                    style="font-family: 'Playfair Display', serif;">
+                    How to Order<span class="section-title-line"></span>
+                </h2>
+                <p class="text-[13px] tracking-[0.2em] font-medium opacity-60">3 EASY STEPS</p>
+                <div class="flex justify-center mt-4">
+                    <div class="h-[2px] w-16 bg-[var(--blob-brown)] rounded-full"></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                <!-- Connecting line (desktop only) -->
+                <div class="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-[2px] bg-[var(--blob-beige)] z-0"
+                    style="top:2.5rem;"></div>
+
+                <!-- Step 1 -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-sm text-center relative z-10 flex flex-col items-center gap-4">
+                    <div
+                        class="w-20 h-20 rounded-full bg-[var(--blob-beige)] flex items-center justify-center shrink-0">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 2C6.477 2 2 6.145 2 11.243c0 2.907 1.453 5.504 3.727 7.196V22l3.405-1.868c.91.252 1.871.387 2.868.387 5.523 0 10-4.145 10-9.243S17.523 2 12 2z" />
+                        </svg>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-[0.2em] text-[var(--blob-brown)] opacity-60">STEP
+                        1</span>
+                    <h3 class="font-bold text-base text-[var(--text-dark)]"
+                        style="font-family: 'Playfair Display', serif;">Message Us</h3>
+                    <p class="text-[12px] opacity-60 leading-relaxed">Send us your event date, cake size, and any design
+                        ideas. Not sure yet? Just ask — we'll help you choose.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-sm text-center relative z-10 flex flex-col items-center gap-4">
+                    <div
+                        class="w-20 h-20 rounded-full bg-[var(--blob-beige)] flex items-center justify-center shrink-0">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                        </svg>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-[0.2em] text-[var(--blob-brown)] opacity-60">STEP
+                        2</span>
+                    <h3 class="font-bold text-base text-[var(--text-dark)]"
+                        style="font-family: 'Playfair Display', serif;">We Confirm &amp; Quote</h3>
+                    <p class="text-[12px] opacity-60 leading-relaxed">We'll confirm availability and give you a quote.
+                        No hidden fees — what we quote is what you pay.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-sm text-center relative z-10 flex flex-col items-center gap-4">
+                    <div
+                        class="w-20 h-20 rounded-full bg-[var(--blob-beige)] flex items-center justify-center shrink-0">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <path d="M16 10a4 4 0 01-8 0" />
+                        </svg>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-[0.2em] text-[var(--blob-brown)] opacity-60">STEP
+                        3</span>
+                    <h3 class="font-bold text-base text-[var(--text-dark)]"
+                        style="font-family: 'Playfair Display', serif;">Pick Up Fresh</h3>
+                    <p class="text-[12px] opacity-60 leading-relaxed">Your cake is baked fresh and ready for pickup at
+                        our Calauan bakery on your celebration day.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-10 p-8">
+                <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                    class="order-link inline-flex items-center gap-2 bg-[var(--text-dark)] text-white text-[11px] font-bold tracking-[0.15em] px-10 py-4 rounded-xl hover:bg-[#33170c] transition-colors shadow-lg btn-shine">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M12 2C6.477 2 2 6.145 2 11.243c0 2.907 1.453 5.504 3.727 7.196V22l3.405-1.868c.91.252 1.871.387 2.868.387 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.07 12.457l-2.55-2.72-4.97 2.72 5.465-5.8 2.613 2.72 4.907-2.72-5.465 5.8z" />
+                    </svg>
+                    START YOUR ORDER
+                </a>
+                <p class="text-[10px] opacity-40 mt-2">Message us on Facebook Messenger</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Menu Section -->
     <section id="menu" class="py-20 px-10 md:px-16 bg-white relative overflow-hidden">
         <!-- Decorative blobs -->
@@ -428,8 +550,8 @@
                 <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2"
                     style="font-family: 'Playfair Display', serif;">Our Menu<span class="section-title-line"></span>
                 </h2>
-                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-2">FRESHLY BAKED WITH LOVE
-                </p>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-2">FOR BIRTHDAYS · DEBUTS ·
+                    WEDDINGS · EVERYDAY TREATS</p>
                 <p class="text-center text-sm opacity-50 mb-4">All cakes are 7x4 size unless stated otherwise</p>
                 <div class="flex justify-center mb-12">
                     <div class="h-[2px] w-16 bg-[var(--blob-brown)] rounded-full"></div>
@@ -448,7 +570,8 @@
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/mango.png" alt="Mango Cake"
-                                class="max-w-[140%] max-h-[140%] object-contain group-hover:scale-105 transition-transform duration-500" width="2000" height="2500">
+                                class="max-w-[140%] max-h-[140%] object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="2000" height="2500">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Mango Cake</h3>
@@ -456,13 +579,17 @@
                             <span
                                 class="inline-block bg-[var(--blob-brown)] text-white text-[10px] font-semibold px-3 py-1 rounded-full mb-2">SEASONAL</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900 - &#8369;1,000</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/chiffon-vanilla.png" alt="Vanilla Chiffon Cake"
-                                class="max-w-[110%] max-h-[110%] object-contain group-hover:scale-105 transition-transform duration-500" width="2000" height="2710">
+                                class="max-w-[110%] max-h-[110%] object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="2000" height="2710">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Vanilla Chiffon Cake</h3>
@@ -471,13 +598,17 @@
                             <span
                                 class="inline-block bg-[var(--blob-brown)] text-white text-[10px] font-semibold px-3 py-1 rounded-full mb-2">BESTSELLER</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;850</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/chiffon-choco.png" alt="Choco Chiffon Cake"
-                                class="max-w-[105%] max-h-[105%] object-contain group-hover:scale-105 transition-transform duration-500" width="896" height="1198">
+                                class="max-w-[105%] max-h-[105%] object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="896" height="1198">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Choco Chiffon Cake</h3>
@@ -487,13 +618,17 @@
                                 class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">FAN
                                 FAVORITE</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/chiffon-mocha.png" alt="Mocha Chiffon Cake"
-                                class="max-w-[110%] max-h-[110%] object-contain group-hover:scale-105 transition-transform duration-500" width="2000" height="2525">
+                                class="max-w-[110%] max-h-[110%] object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="2000" height="2525">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Mocha Chiffon Cake</h3>
@@ -503,13 +638,17 @@
                                 class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">FAN
                                 FAVORITE</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/chiffon-ube.png" alt="Ube Chiffon Cake"
-                                class="max-w-[70%] max-h-[70%] object-contain group-hover:scale-105 transition-transform duration-500" width="500" height="326">
+                                class="max-w-[70%] max-h-[70%] object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="500" height="326">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Ube Chiffon Cake</h3>
@@ -518,7 +657,10 @@
                                 class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">PINOY
                                 CLASSIC</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;900</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                 </div>
@@ -536,7 +678,8 @@
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/chocomoist.png" alt="Chocomoist Cake"
-                                class="max-w-[140%] max-h-[140%] object-contain group-hover:scale-105 transition-transform duration-500" width="2000" height="2500">
+                                class="max-w-[140%] max-h-[140%] object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="2000" height="2500">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Chocomoist Cake</h3>
@@ -545,13 +688,17 @@
                             <span
                                 class="inline-block bg-[var(--blob-brown)] text-white text-[10px] font-semibold px-3 py-1 rounded-full mb-2">BESTSELLER</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;1,500</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/caramel.png" alt="Creamy Caramel Cake"
-                                class="max-w-[120%] max-h-[120%] object-contain group-hover:scale-105 transition-transform duration-500" width="2000" height="2673">
+                                class="max-w-[120%] max-h-[120%] object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="2000" height="2673">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Creamy Caramel Cake</h3>
@@ -561,7 +708,10 @@
                                 class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mb-2">MUST
                                 TRY</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;1,000</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                 </div>
@@ -579,7 +729,8 @@
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/cupcakes.png" alt="Chocomoist Cupcakes"
-                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" width="837" height="813">
+                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="837" height="813">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Chocomoist Cupcakes</h3>
@@ -588,13 +739,17 @@
                                 class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mt-2 mb-2">12
                                 PCS</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;550</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                     <div class="bg-[var(--bg-color)] rounded-2xl overflow-hidden card-hover shadow-sm group">
                         <div class="w-full h-56 overflow-hidden flex items-center justify-center pt-4">
                             <img loading="lazy" src="images/menu/bento-cupcakes.png" alt="Bento Cake with Cupcakes"
-                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" width="787" height="578">
+                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                                width="787" height="578">
                         </div>
                         <div class="p-6 text-center">
                             <h3 class="font-bold text-lg text-[var(--text-dark)]">Bento Cake with Cupcakes</h3>
@@ -603,7 +758,10 @@
                                 class="inline-block bg-[var(--bg-color)] border border-[var(--blob-brown)] text-[var(--blob-brown)] text-[10px] font-semibold px-3 py-1 rounded-full mt-2 mb-2">8
                                 PCS</span>
                             <p class="text-[15px] font-bold text-[var(--blob-brown)]">&#8369;650</p>
-                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" class="order-link inline-block mt-3 text-[11px] font-bold tracking-wider text-white bg-[var(--blob-brown)] hover:bg-[var(--text-dark)] transition-colors px-5 py-2 rounded-full">ORDER THIS</a>
+                            <p class="text-[10px] opacity-40 mt-2">Order 2–3 days ahead</p>
+                            <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer"
+                                class="order-link inline-block mt-1 text-[11px] font-bold tracking-wider text-white bg-[var(--text-dark)] hover:bg-[#33170c] transition-colors px-5 py-2 rounded-full">ORDER
+                                THIS</a>
                         </div>
                     </div>
                 </div>
@@ -611,7 +769,9 @@
 
             <!-- Order CTA -->
             <div class="reveal mt-16 text-center">
-                <p class="text-[13px] opacity-60 mb-4">Want to place an order? Message us on Facebook!</p>
+                <p class="text-[13px] opacity-60 mb-1">Want to place an order? Message us on Facebook!</p>
+                <p class="text-[12px] opacity-40 mb-4">Ordering for this weekend? Message us today — we'll do our best
+                    to fit you in.</p>
                 <a href="https://www.facebook.com/messages/t/YhanasCakesandPastries" target="_blank"
                     class="order-link inline-flex items-center gap-2 bg-[var(--text-dark)] text-white text-[13px] font-semibold px-8 py-3 rounded-full hover:bg-[#33170c] transition-colors btn-shine">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
@@ -689,11 +849,16 @@
 
             <!-- Category Filter Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button onclick="filterCakes('all')" data-filter="all" class="cake-filter-btn active-filter px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">ALL</button>
-                <button onclick="filterCakes('floral')" data-filter="floral" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">FLORAL</button>
-                <button onclick="filterCakes('themed')" data-filter="themed" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">THEMED</button>
-                <button onclick="filterCakes('number')" data-filter="number" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">NUMBER</button>
-                <button onclick="filterCakes('special')" data-filter="special" class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">SPECIAL</button>
+                <button onclick="filterCakes('all')" data-filter="all"
+                    class="cake-filter-btn active-filter px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">ALL</button>
+                <button onclick="filterCakes('floral')" data-filter="floral"
+                    class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">FLORAL</button>
+                <button onclick="filterCakes('themed')" data-filter="themed"
+                    class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">THEMED</button>
+                <button onclick="filterCakes('number')" data-filter="number"
+                    class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">NUMBER</button>
+                <button onclick="filterCakes('special')" data-filter="special"
+                    class="cake-filter-btn px-5 py-2 rounded-full text-[12px] font-bold tracking-wider transition-all duration-200">SPECIAL</button>
             </div>
 
             <div class="space-y-14">
@@ -713,18 +878,30 @@
                                 &bull; Price varies by design</p>
                         </div>
                         <div class="grid grid-cols-3 gap-2 p-3">
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/floral/wedding.png"
-                                    alt="White 2-tier wedding cake with pink roses and Mr &amp; Mrs gold topper" class="w-full h-full object-cover" width="1365" height="1706"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/floral/18.png"
-                                    alt="Pink 3-tier debut cake with floral cascade and gold butterfly decorations for 18th birthday" class="w-full h-full object-cover" width="2912" height="3640"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/floral/1.png"
-                                    alt="Green ombre 2-tier 60th birthday cake with white peonies and Hello 60 gold topper" class="w-full h-full object-cover" width="694" height="868"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/floral/70.png"
-                                    alt="Pink floral 70th birthday cake with gold topper and matching pink cupcakes" class="w-full h-full object-cover" width="2992" height="3740"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/floral/cake.jpg"
-                                    alt="Chocolate layer cake with floral decorations by Yhana's Cakes and Pastries" class="w-full h-full object-cover" width="720" height="900"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/floral/6.png"
-                                    alt="White and gold 60th birthday floral cake with pink roses and matching gold cupcakes" class="w-full h-full object-cover" width="748" height="935"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/floral/wedding.png"
+                                    alt="White 2-tier wedding cake with pink roses and Mr &amp; Mrs gold topper"
+                                    class="w-full h-full object-cover" width="1365" height="1706"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/floral/18.png"
+                                    alt="Pink 3-tier debut cake with floral cascade and gold butterfly decorations for 18th birthday"
+                                    class="w-full h-full object-cover" width="2912" height="3640"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/floral/1.png"
+                                    alt="Green ombre 2-tier 60th birthday cake with white peonies and Hello 60 gold topper"
+                                    class="w-full h-full object-cover" width="694" height="868"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/floral/70.png"
+                                    alt="Pink floral 70th birthday cake with gold topper and matching pink cupcakes"
+                                    class="w-full h-full object-cover" width="2992" height="3740"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/floral/cake.jpg"
+                                    alt="Chocolate layer cake with floral decorations by Yhana's Cakes and Pastries"
+                                    class="w-full h-full object-cover" width="720" height="900"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/floral/6.png"
+                                    alt="White and gold 60th birthday floral cake with pink roses and matching gold cupcakes"
+                                    class="w-full h-full object-cover" width="748" height="935"></div>
                         </div>
                     </div>
                 </div>
@@ -733,18 +910,29 @@
                 <div data-category="themed" class="reveal bg-[var(--bg-color)] rounded-3xl shadow-sm overflow-hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="order-2 md:order-1 grid grid-cols-3 gap-2 p-3">
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/themed/1.png"
-                                    alt="3-tier mermaid themed birthday cake with matching cupcakes" class="w-full h-full" width="748" height="1000"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/themed/5.png"
-                                    alt="2-tier Jurassic Park dinosaur themed birthday cake" class="w-full h-full" width="563" height="832"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/themed/12.png"
-                                    alt="2-tier candy and sweets themed birthday cake with lollipops and marshmallows" class="w-full h-full" width="677" height="1037"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/themed/11.png"
-                                    alt="Pokemon themed birthday cake with Pikachu and friends" class="w-full h-full" width="563" height="944"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/themed/8.png"
-                                    alt="Spider-Man superhero themed birthday cake" class="w-full h-full" width="563" height="864"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/themed/14.png"
-                                    alt="Minnie Mouse themed birthday cake in red and white polka dots" class="w-full h-full" width="563" height="912"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/themed/1.png"
+                                    alt="3-tier mermaid themed birthday cake with matching cupcakes"
+                                    class="w-full h-full" width="748" height="1000"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/themed/5.png"
+                                    alt="2-tier Jurassic Park dinosaur themed birthday cake" class="w-full h-full"
+                                    width="563" height="832"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/themed/12.png"
+                                    alt="2-tier candy and sweets themed birthday cake with lollipops and marshmallows"
+                                    class="w-full h-full" width="677" height="1037"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/themed/11.png"
+                                    alt="Pokemon themed birthday cake with Pikachu and friends" class="w-full h-full"
+                                    width="563" height="944"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/themed/8.png" alt="Spider-Man superhero themed birthday cake"
+                                    class="w-full h-full" width="563" height="864"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/themed/14.png"
+                                    alt="Minnie Mouse themed birthday cake in red and white polka dots"
+                                    class="w-full h-full" width="563" height="912"></div>
                         </div>
                         <div class="order-1 md:order-2 p-8 md:p-10 flex flex-col justify-center">
                             <span
@@ -774,29 +962,43 @@
                                 Price varies by design</p>
                         </div>
                         <div class="grid grid-cols-3 gap-2 p-3">
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/number/1.png"
-                                    alt="Number 51 shaped birthday cake with cookies and chocolate toppings" class="w-full h-full object-cover" width="598" height="748"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/number/2.png"
-                                    alt="Number 1 shaped unicorn rainbow birthday cake" class="w-full h-full object-cover" width="680" height="780"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/number/3.png"
-                                    alt="Number 3 shaped birthday cake with red roses and hearts" class="w-full h-full object-cover" width="750" height="752"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/number/8.png"
-                                    alt="Number 3 shaped mermaid themed birthday cake" class="w-full h-full object-cover" width="595" height="744"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/number/9.png"
-                                    alt="Number 1 shaped birthday cake with pink roses" class="w-full h-full object-cover" width="748" height="753"></div>
-                            <div class="rounded-xl overflow-hidden"><img loading="lazy" src="images/customized/number/10.png"
-                                    alt="Number 2 shaped birthday cake with peach and pink floral arrangement" class="w-full h-full object-cover" width="748" height="748"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/number/1.png"
+                                    alt="Number 51 shaped birthday cake with cookies and chocolate toppings"
+                                    class="w-full h-full object-cover" width="598" height="748"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/number/2.png"
+                                    alt="Number 1 shaped unicorn rainbow birthday cake"
+                                    class="w-full h-full object-cover" width="680" height="780"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/number/3.png"
+                                    alt="Number 3 shaped birthday cake with red roses and hearts"
+                                    class="w-full h-full object-cover" width="750" height="752"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/number/8.png"
+                                    alt="Number 3 shaped mermaid themed birthday cake"
+                                    class="w-full h-full object-cover" width="595" height="744"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/number/9.png"
+                                    alt="Number 1 shaped birthday cake with pink roses"
+                                    class="w-full h-full object-cover" width="748" height="753"></div>
+                            <div class="rounded-xl overflow-hidden"><img loading="lazy"
+                                    src="images/customized/number/10.png"
+                                    alt="Number 2 shaped birthday cake with peach and pink floral arrangement"
+                                    class="w-full h-full object-cover" width="748" height="748"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Smaller Categories Grid -->
-                <div data-category="special" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+                <div data-category="special"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
                     <!-- Ball Cakes -->
                     <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
-                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                        <div class="w-full h-52 flex items-center justify-center py-4">
                             <img loading="lazy" src="images/customized/special/ball.png" alt="Ball Cakes"
-                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl" width="2992" height="3740">
+                                style="border-radius: 10px !important; height: 100%; width: auto; display: block;"
+                                class="object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" width="2992" height="3740">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Ball Cakes</h3>
@@ -806,9 +1008,10 @@
                     </div>
                     <!-- Butterfly Cakes -->
                     <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
-                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                        <div class="w-full h-52 flex items-center justify-center py-4">
                             <img loading="lazy" src="images/customized/special/butterfly.png" alt="Butterfly Cakes"
-                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl" width="563" height="846">
+                                style="border-radius: 10px !important; height: 100%; width: auto; display: block;"
+                                class="object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" width="563" height="846">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Butterfly Cakes</h3>
@@ -818,9 +1021,10 @@
                     </div>
                     <!-- Money Cakes -->
                     <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
-                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                        <div class="w-full h-52 flex items-center justify-center py-4">
                             <img loading="lazy" src="images/customized/special/money.png" alt="Money Cakes"
-                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl" width="732" height="956">
+                                style="border-radius: 10px !important; height: 100%; width: auto; display: block;"
+                                class="object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" width="732" height="956">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Money Cakes</h3>
@@ -830,9 +1034,10 @@
                     </div>
                     <!-- Gender Reveal Cakes -->
                     <div class="reveal bg-[var(--bg-color)] rounded-3xl overflow-hidden shadow-sm card-hover group">
-                        <div class="w-full h-52 overflow-hidden flex items-center justify-center pt-4">
+                        <div class="w-full h-52 flex items-center justify-center py-4">
                             <img loading="lazy" src="images/customized/special/gender-reveal.png" alt="Gender Reveal Cakes"
-                                class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-2xl" width="598" height="748">
+                                style="border-radius: 10px !important; height: 100%; width: auto; display: block;"
+                                class="object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" width="598" height="748">
                         </div>
                         <div class="p-5 text-center">
                             <h3 class="font-bold text-base text-[var(--text-dark)] mb-1">Gender Reveal Cakes</h3>
@@ -847,9 +1052,9 @@
             <!-- Custom Order CTA -->
             <div class="reveal mt-16 text-center p-10">
                 <h3 class="font-bold text-xl text-[var(--text-dark)] mb-2"
-                    style="font-family: 'Playfair Display', serif;">Have a design in mind?</h3>
-                <p class="text-[13px] opacity-60 mb-6 max-w-md mx-auto">Send us your inspiration photo and we'll give
-                    you a quote. We love bringing your cake dreams to life!</p>
+                    style="font-family: 'Playfair Display', serif;">The cake your guests won't stop talking about</h3>
+                <p class="text-[13px] opacity-60 mb-6 max-w-md mx-auto">Send us your inspiration photo and we'll design
+                    it together. Your guests will be asking where you got it.</p>
                 <a href="https://www.facebook.com/messages/t/YhanasCakesandPastries" target="_blank"
                     class="order-link inline-flex items-center gap-2 bg-[var(--text-dark)] text-white text-[13px] font-semibold px-8 py-3 rounded-full hover:bg-[#33170c] transition-colors btn-shine">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
@@ -921,8 +1126,9 @@
                     <h3 class="font-bold text-2xl text-[var(--text-dark)] mb-4"
                         style="font-family: 'Playfair Display', serif;">Make every moment sweeter</h3>
                     <p class="text-[13px] leading-relaxed opacity-80 mb-6">
-                        Make every moment in life sweeter and more memorable with our cakes. Whether it's birthdays,
-                        weddings, anniversaries, or any celebration - we craft each cake with love and care.
+                        Your family's special moments deserve a cake made for <em>them</em> — not mass-produced for
+                        everyone. Every Yhana's cake is baked fresh to order, custom-designed for your specific
+                        occasion, and made to be remembered long after the candles are blown out.
                     </p>
                     <div class="space-y-3 text-[13px]">
                         <div class="flex items-start gap-3">
@@ -939,7 +1145,8 @@
                                 <path
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
-                            <a href="tel:+639551400402" class="hover:opacity-70 transition-opacity">0955 140 0402</a> / <a href="tel:+639062327969" class="hover:opacity-70 transition-opacity">0906 232 7969</a>
+                            <a href="tel:+639551400402" class="hover:opacity-70 transition-opacity">0955 140 0402</a> /
+                            <a href="tel:+639062327969" class="hover:opacity-70 transition-opacity">0906 232 7969</a>
                         </div>
                         <div class="flex items-start gap-3">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blob-brown)"
@@ -968,16 +1175,17 @@
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="reveal">
                 <h2 class="text-center font-bold text-[2.5rem] text-[var(--text-dark)] mb-2"
-                    style="font-family: 'Playfair Display', serif;">What They Say<span
+                    style="font-family: 'Playfair Display', serif;">Celebrations They Still Talk About<span
                         class="section-title-line"></span></h2>
-                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">HAPPY CUSTOMERS</p>
+                <p class="text-center text-[13px] tracking-[0.2em] font-medium opacity-60 mb-12">WHAT FAMILIES SAY</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
                 <div class="bg-white rounded-3xl p-8 shadow-sm">
                     <div class="flex gap-1 mb-4">
                         <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
                     </div>
-                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Sobrang sarap ng mango cake! Fresh na fresh
+                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Sobrang sarap ng mango cake! Fresh
+                        na fresh
                         at hindi masyadong matamis. Lagi kaming nag-oorder dito for special occasions."</p>
                     <div class="flex items-center gap-3">
                         <div
@@ -993,7 +1201,8 @@
                     <div class="flex gap-1 mb-4">
                         <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
                     </div>
-                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Pinag-order ko yung customized floral cake
+                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Pinag-order ko yung customized
+                        floral cake
                         for my debut and lahat ng guests napuri! Ang ganda at ang sarap. Highly recommended!"</p>
                     <div class="flex items-center gap-3">
                         <div
@@ -1009,7 +1218,8 @@
                     <div class="flex gap-1 mb-4">
                         <span class="text-[var(--blob-brown)] text-lg">★★★★★</span>
                     </div>
-                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Chocomoist cake is life! Sobrang moist at
+                    <p class="text-[13px] leading-relaxed opacity-70 mb-5" lang="tl">"Chocomoist cake is life! Sobrang
+                        moist at
                         masarap. Sulit na sulit ang presyo. Ito na ang bilhin ko every birthday ng pamilya ko."</p>
                     <div class="flex items-center gap-3">
                         <div
@@ -1123,7 +1333,8 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
             <div>
                 <div class="flex items-center gap-3 mb-4">
-                    <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-12 w-12 object-contain" width="500" height="500">
+                    <img src="images/logo.png" alt="Yhana's Cakes and Pastries" class="h-12 w-12 object-contain"
+                        width="500" height="500">
                     <span class="font-bold tracking-widest text-sm leading-tight">Yhana's<br>Cakes and Pastries</span>
                 </div>
                 <p class="text-[12px] opacity-60 leading-relaxed">Freshly baked with love in Calauan, Laguna. Making
@@ -1133,7 +1344,8 @@
                 <h4 class="font-bold text-sm tracking-widest mb-4 opacity-80">CONTACT</h4>
                 <div class="space-y-2 text-[12px] opacity-60">
                     <p>📍 47 L. Geirosa Ave, Silangan, Calauan, Laguna</p>
-                    <p>📞 <span id="contact-number"></span><noscript>Enable JavaScript to view contact number, or visit our Facebook page.</noscript></p>
+                    <p>📞 <span id="contact-number"></span><noscript>Enable JavaScript to view contact number, or visit
+                            our Facebook page.</noscript></p>
                     <p>🕐 Open daily — message us for availability</p>
                 </div>
             </div>
@@ -1156,7 +1368,7 @@
 
     <!-- Floating Order Button (mobile only) -->
     <a href="https://m.me/YhanasCakesandPastries" target="_blank" rel="noopener noreferrer" id="floating-order-btn"
-        class="order-link md:hidden fixed bottom-6 right-5 z-50 flex items-center gap-2 bg-gradient-to-r from-[var(--blob-brown)] to-[var(--text-dark)] text-white text-[11px] font-bold tracking-wider px-5 py-3 rounded-full shadow-lg hover:scale-105 transition-all duration-300">
+        class="order-link md:hidden fixed bottom-6 right-5 z-50 flex items-center gap-2 bg-gradient-to-r from-[var(--blob-brown)] to-[var(--text-dark)] text-white text-[11px] font-bold tracking-wider px-5 py-3 rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-2 border-white">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
             <path
                 d="M12 2C6.477 2 2 6.145 2 11.243c0 2.907 1.453 5.504 3.727 7.196V22l3.405-1.868c.91.252 1.871.387 2.868.387 5.523 0 10-4.145 10-9.243S17.523 2 12 2zm1.07 12.457l-2.55-2.72-4.97 2.72 5.465-5.8 2.613 2.72 4.907-2.72-5.465 5.8z" />
@@ -1166,7 +1378,8 @@
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightbox-close" aria-label="Close image viewer" type="button">&times;</button>
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close image viewer"
+            type="button">&times;</button>
         <img id="lightbox-img" src="" alt="Full view">
     </div>
 
