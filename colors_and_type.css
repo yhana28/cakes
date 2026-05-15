@@ -1,0 +1,239 @@
+/* ============================================================
+   Cake Shop — Design System Tokens
+   colors_and_type.css
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Google Fonts Import
+   Primary: Playfair Display (display/headline serif)
+   Secondary: Nunito (UI / body sans-serif)
+   NOTE: These are the closest Google Fonts matches to the
+   original screenshot. Provide original font files if available.
+   ------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap');
+
+/* ------------------------------------------------------------
+   BASE COLOR PRIMITIVES
+   ------------------------------------------------------------ */
+:root {
+  /* Brand Red / Primary */
+  --color-red-400:     #f26249;
+  --color-red-500:     #e8432a;   /* ← brand primary */
+  --color-red-600:     #c93520;
+  --color-red-700:     #a82518;
+
+  /* Peach / Warm Cream */
+  --color-peach-100:   #fef6ee;
+  --color-peach-200:   #faeadb;
+  --color-peach-300:   #fae8d5;   /* ← hero background */
+  --color-peach-400:   #f5d9bc;
+  --color-peach-500:   #e8c49a;
+
+  /* Neutrals */
+  --color-white:       #ffffff;
+  --color-gray-50:     #fafafa;
+  --color-gray-100:    #f5f5f5;
+  --color-gray-200:    #eeeeee;
+  --color-gray-300:    #dddddd;
+  --color-gray-400:    #aaaaaa;
+  --color-gray-500:    #777777;
+  --color-gray-600:    #555555;
+  --color-gray-700:    #333333;
+  --color-gray-800:    #222222;
+  --color-gray-900:    #1a1a1a;   /* ← near-black headline */
+
+  /* ------------------------------------------------------------
+     SEMANTIC COLOR ROLES
+     ------------------------------------------------------------ */
+
+  /* Brand */
+  --color-brand-primary:       var(--color-red-500);
+  --color-brand-primary-hover: var(--color-red-600);
+  --color-brand-primary-press: var(--color-red-700);
+
+  /* Backgrounds */
+  --color-bg-page:       var(--color-white);
+  --color-bg-hero:       var(--color-peach-300);
+  --color-bg-card:       var(--color-white);
+  --color-bg-subtle:     var(--color-gray-100);
+
+  /* Text */
+  --color-fg-heading:    var(--color-gray-900);
+  --color-fg-body:       var(--color-gray-700);
+  --color-fg-muted:      var(--color-gray-500);
+  --color-fg-brand:      var(--color-red-500);
+  --color-fg-on-brand:   var(--color-white);
+
+  /* Interactive */
+  --color-btn-primary-bg:        var(--color-red-500);
+  --color-btn-primary-text:      var(--color-white);
+  --color-btn-primary-hover:     var(--color-red-600);
+  --color-btn-outline-border:    var(--color-red-500);
+  --color-btn-outline-text:      var(--color-red-500);
+  --color-btn-outline-hover-bg:  var(--color-red-500);
+  --color-btn-outline-hover-text:var(--color-white);
+
+  /* Wishlist / Heart */
+  --color-heart-active:  var(--color-red-500);
+  --color-heart-idle:    transparent;
+  --color-heart-stroke:  var(--color-red-500);
+
+  /* Price */
+  --color-price:         var(--color-red-500);
+
+  /* Borders */
+  --color-border-light:  var(--color-gray-200);
+  --color-border-card:   var(--color-gray-200);
+
+  /* ------------------------------------------------------------
+     TYPOGRAPHY — Font Families
+     ------------------------------------------------------------ */
+  --font-display:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:     'Nunito', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:     'Courier New', Courier, monospace;
+
+  /* ------------------------------------------------------------
+     TYPOGRAPHY — Scale (px-based, use rem in production)
+     ------------------------------------------------------------ */
+  --text-xs:     11px;
+  --text-sm:     13px;
+  --text-base:   15px;
+  --text-md:     17px;
+  --text-lg:     20px;
+  --text-xl:     24px;
+  --text-2xl:    30px;
+  --text-3xl:    36px;
+  --text-4xl:    48px;
+  --text-5xl:    60px;
+
+  /* ------------------------------------------------------------
+     TYPOGRAPHY — Weight
+     ------------------------------------------------------------ */
+  --weight-light:     300;
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* ------------------------------------------------------------
+     TYPOGRAPHY — Line Height
+     ------------------------------------------------------------ */
+  --leading-tight:   1.15;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* ------------------------------------------------------------
+     TYPOGRAPHY — Letter Spacing
+     ------------------------------------------------------------ */
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.05em;
+  --tracking-widest:   0.12em;
+
+  /* ------------------------------------------------------------
+     SEMANTIC TYPE ROLES
+     ------------------------------------------------------------ */
+
+  /* h1 — hero display headline */
+  --h1-family:     var(--font-display);
+  --h1-size:       var(--text-4xl);
+  --h1-weight:     var(--weight-bold);
+  --h1-leading:    var(--leading-tight);
+  --h1-tracking:   var(--tracking-tight);
+  --h1-color:      var(--color-fg-heading);
+
+  /* h2 — section title */
+  --h2-family:     var(--font-body);
+  --h2-size:       var(--text-3xl);
+  --h2-weight:     var(--weight-bold);
+  --h2-leading:    var(--leading-snug);
+  --h2-tracking:   var(--tracking-normal);
+  --h2-color:      var(--color-fg-heading);
+
+  /* h3 — card / subsection title */
+  --h3-family:     var(--font-body);
+  --h3-size:       var(--text-xl);
+  --h3-weight:     var(--weight-bold);
+  --h3-leading:    var(--leading-snug);
+  --h3-color:      var(--color-fg-heading);
+
+  /* p — body text */
+  --p-family:      var(--font-body);
+  --p-size:        var(--text-base);
+  --p-weight:      var(--weight-regular);
+  --p-leading:     var(--leading-relaxed);
+  --p-color:       var(--color-fg-body);
+
+  /* small / caption */
+  --caption-family:   var(--font-body);
+  --caption-size:     var(--text-sm);
+  --caption-weight:   var(--weight-regular);
+  --caption-color:    var(--color-fg-muted);
+
+  /* nav link */
+  --nav-family:    var(--font-body);
+  --nav-size:      var(--text-sm);
+  --nav-weight:    var(--weight-500);
+  --nav-color:     var(--color-fg-body);
+
+  /* button label */
+  --btn-family:    var(--font-body);
+  --btn-size:      var(--text-sm);
+  --btn-weight:    var(--weight-bold);
+  --btn-tracking:  var(--tracking-widest);
+
+  /* price */
+  --price-family:  var(--font-body);
+  --price-size:    var(--text-md);
+  --price-weight:  var(--weight-bold);
+  --price-color:   var(--color-price);
+
+  /* product name */
+  --product-name-family: var(--font-body);
+  --product-name-size:   var(--text-sm);
+  --product-name-weight: var(--weight-regular);
+  --product-name-color:  var(--color-fg-body);
+
+  /* ------------------------------------------------------------
+     SPACING SCALE
+     ------------------------------------------------------------ */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+  /* ------------------------------------------------------------
+     BORDER RADIUS
+     ------------------------------------------------------------ */
+  --radius-sm:   4px;    /* buttons */
+  --radius-md:   8px;
+  --radius-lg:   12px;   /* product cards */
+  --radius-xl:   20px;
+  --radius-full: 9999px; /* pill */
+
+  /* ------------------------------------------------------------
+     SHADOWS
+     ------------------------------------------------------------ */
+  --shadow-sm:   0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:   0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg:   0 6px 24px rgba(0,0,0,0.12);
+  --shadow-card: var(--shadow-md);
+
+  /* ------------------------------------------------------------
+     LAYOUT
+     ------------------------------------------------------------ */
+  --max-width:     1200px;
+  --nav-height:    64px;
+  --grid-cols:     4;
+  --card-gap:      20px;
+}
